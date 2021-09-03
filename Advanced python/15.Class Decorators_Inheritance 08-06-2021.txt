@@ -1,0 +1,546 @@
+Python Metaprogramming
+It is the concept of building functions and classes whose primary target is to manipulate code by modifying, wrapping or generating existing code. The major features of meta-programming are:
+I. Metaclasses
+II. Decorators
+III. Class-decorators
+
+Metaclasses
+In Python everything have some type associated with it. You can get type of anything using type() function. Metaclass create Classes and Classes creates objects.
+
+Metaclass-Hierarchy.jpg..!
+
+Example:
+num = 23
+print("Type of num is:", type(num)) #<class 'int'>
+ 
+lst = [1, 2, 4] 
+print("Type of lst is:", type(lst)) #<class 'list'>
+
+name = "PYTHON"
+print("Type of name is:", type(name)) #<class 'str'>
+
+Every type in Python is defined by Class.
+Example:
+class Student(): 
+	pass
+Stu_Obj = Student() 
+print("Type of stu_obj is:", type(Stu_Obj)) #<class '__main__.Student'>
+
+A Class is also an object, and just like any other object it’s a instance of something called Metaclass. A special class type creates these Class object. 
+
+Class-decorators
+Decorators are a very powerful and useful tool in Python since it allows programmers to modify the behaviour of function or class. 
+
+Example:
+class MyDecorator: 
+	def __init__(self, function): 
+		self.function = function 
+	def __call__(self): 
+		self.function() 
+@MyDecorator
+def function(): 
+	print("Welcome to Class Decorators") 
+function() 
+
+Example:
+def Decorator_One(f):
+    def Method():
+        print("Decorating", f.__name__)
+        f()
+    return Method
+@Decorator_One
+def Decorator_Method():
+    print("inside Decorator_Method()")
+Decorator_Method()
+
+
+Python property decorator--@property
+It is one of the built-in decorators. The main purpose of any decorator is to change your class methods or attributes in such a way so that the user of your class no need to make any change in their code.
+Property Decorators - Getters, Setters and Deleters
+
+Setter Method:
+It can be used to set values to the instance variables. setter methods also known as mutator methods.
+
+Syntax:
+def setVariable(self,variable): 
+      self.variable=variable
+
+Example:
+def setName(self,name): 
+         self.name=name
+
+
+Getter Method:
+It can be used to get values of the instance variables. Getter methods also known as accessor methods.
+
+Syntax:
+def getVariable(self): 
+     return self.variable
+
+Example:
+def getName(self): 
+      return self.name
+ 
+Example:
+class Student:
+    def setName(self,name):
+        self.name=name
+    def getName(self):
+        return self.name
+n=int(input('Enter number of students:'))
+for i in range(n):
+     s=Student()
+     name=input('Enter Name:')
+     s.setName(name)
+print('Hi',s.getName())
+
+Example:
+class Student:
+    def setName(self,name):
+        self.name=name
+    def DelName(self):
+        return self.name
+n=int(input('Enter number of students:'))
+for i in range(n):
+     s=Student()
+     name=input('Enter Name:')
+     s.setName(name)
+del name
+
+Example:
+getter and setter:
+class student():
+    def setname(self,name):
+        self.name=name
+    def getname(self):
+        return self.name
+n=int(input("enter number of stds: "))
+for i in range(n):
+    s=student()
+    name=input('enter name: ')
+print("hello: ",s.getname())
+s.setname(name)
+print("hello: ",s.getname())
+
+WHY INHERITANCE(NEED OF REUSABILITY)
+Example:
+class Banking():
+    def Login(self):
+        print("LoginRequiredForBanking")
+        print("Thank U")
+class OnlineBanking():
+    def Login(self):
+        print("LoginRequiredForBanking")
+        print("Thank U")
+    def Online(self):
+        print("Welcome to Online Banking")
+        print("Secured Banking")
+class MobileBanking():
+    def Login(self):
+        print("LoginRequiredForBanking")
+        print("Thank U")
+    def MBanking(self):
+        print("Welcome to Touch Banking")
+        print("It is More Comfort and AnyWhere Banking")
+class PhoneBanking():
+    def Login(self):
+        print("LoginRequiredForBanking")
+        print("Thank U")
+    def PBanking(self):
+        print("Welcome to Phone Banking")
+        print("It is Only for Senior Citizens")
+        print("Thank U")
+
+#Creating Instance or Object
+PP=PhoneBanking()
+PP.Login()
+PP.PBanking()
+MM=MobileBanking()
+MM.Login()
+MM.MBanking()
+OO=OnlineBanking()
+OO.Login()
+OO.Online()
+
+Example: UseCase-II
+class Animal():
+    def Eat(self):
+        print("All Animals are Eating")
+class Dog():
+    def Eat(self):
+        print("All Animals are Eating")
+    def Sound(self):
+        print("Barking........!!")
+class Cat():
+    def Eat(self):
+        print("All Animals are Eating")
+    def Sound(self):
+        print("Mewwwwwwwwww!!!")
+class Lion():
+    def Eat(self):
+        print("All Animals are Eating")
+    def Sound(self):
+        print("Roaring............!!")
+LL=Lion()
+LL.Eat()
+LL.Sound()
+CC=Cat()
+CC.Eat()
+CC.Sound()
+DD=Dog()
+DD.Eat()
+DD.Sound()
+
+INHERITANCE:
+Reuse-Class Members-Attributes & Methods
+OR
+It is the process of inheriting the class members from one class to another class is called Inheritance.
+OR
+The concept of using properties of one class into another class without creating object of that class explicitly is known as inheritance.
+OR
+1 A class which is extended by another class is known as 'super class'.
+2 Both super class property and sub class property can be accessed through sublcass ref.variable
+
+Types of Inheritance(s):
+1. Single Level Inheritance
+2. Multilevel  Inheritance
+3. Multiple Inheritance
+4. Hierarchial  Inheritance
+5. Hybrid Inheritance
+6. Diamond Inheritance
+
+Outline of Inheritance:
+BaseClass #Existing Class
+Feature1
+Feature2
+
+DerievedClass #NewlyCreatedClass
+Feature1
+Feature2
+Feature3
+
+Terminology:
+Parent class ==> Base class ==>Super class
+Child class ==> Derived class==> Sub class
+
+Single Level Inheritance:
+The concept of inheriting properties from only one class into another class is known as single level inheritance.
+
+Syntax:
+class name(superclass):
+    suite
+
+Syntax
+class BaseClass:
+  Body of base class
+class DerivedClass(BaseClass):
+  Body of derived class
+
+Example:
+class animal:   
+    def eat(self):  
+      print('Eating...')
+
+class dog(animal):
+    def bark(self):
+        print("barking")
+
+d=dog()  
+d.eat()  
+d.bark()
+
+Example:
+class Animal():
+    def Eat(self):
+        print("Animal Eating...!!")
+class Dog():
+    def Sound(self):
+        print("Dog Barking..!!")
+
+D=Dog()
+D.Eat()
+D.Sound()
+
+O/P
+AttributeError: 'Dog' object has no attribute 'Eat'
+
+Example:
+class Banker():
+    def Services(self):
+        print("Every Bank Provide Services to Customers")
+class Customer(Banker):
+    def Cust_Ser(self):
+        print("Customer using all services from Banker")
+CC=Customer()
+CC.Services()
+CC.Cust_Ser()
+
+Example:
+class animal:   
+    def __init__(self,name):
+        self.name=name
+class dog(animal):
+    def display(self):
+        print(self.name)
+d=dog("Puppy")  
+d.display()  
+
+RealTime Usecases for Single Level Inheritance:
+1. Student ==> Subject
+2. Subject ==> Result
+3. Bank ==> Customer
+4. Bank ==> Services
+5. Product ==> feedback
+
+Multilevel Inheritance
+You can inherit a derived class from another derived class. 
+OR
+Extending features from one derived class to another.
+
+Outline of Multilevel Inheritance:
+BaseClass #Existing Class
+Feature1
+
+DerievedClass1 #NewlyCreatedClass
+Features+BaseClass
+Feature2
+
+DerievedClass2 #NewlyCreatedClass
+Features+BaseClass
+Features+DereivedClass1
+Feature3
+
+Syntax:
+class BaseClass:
+  Body of base class
+class DerivedClass1(BaseClass):
+  Body of derived class1
+class DerivedClass2(DereivedClass1):
+  Body of derived class2
+
+Example:
+class Student():#Super Class
+    def getStudent(self):
+        self.name=input("Name: ")
+        self.age=int(input("Age: "))
+        self.gender=input("Gender: ")
+
+class Subjects(Student):#Derived Class-1
+    def getMarks(self):
+        self.StudentClass=input("Class: ")
+        print("Enter the marks of the respective subjects:")
+        self.Programming=int(input("Programming: "))
+        self.math=int(input("Math: "))
+        self.english=int(input("English: "))
+        self.physics=int(input("Physics: "))
+
+class Marks(Subjects):#Derived Class-2
+    def Display(self):
+        print("\n Name is: ",self.name)
+        print("Age is: ",self.age)
+        print("Gender is: ",self.gender)
+        print("Class Name: ",self.StudentClass)
+        print("Total Marks: ",self.Programming+self.math+self.english+self.physics)
+
+MM=Marks()
+MM.getStudent()
+MM.getMarks()
+MM.Display()
+
+Example:
+class Finacial_Services_India():
+    def FSI(self):
+        print("All Permissions from here")
+        print("It is related Finance")
+class ReserveBankofIndia(Finacial_Services_India):
+    def RBI(self):
+        print("It is leading All Bankers in INDIA")
+        print("Thank u RBI")
+class Bankers_India(ReserveBankofIndia):
+    def Bank_INDIA(self):
+        print("Welcome to Indian Banks")
+        print("We are ready to serve")
+        print("We deal Finanacial Matters")
+BI=Bankers_India()
+BI.FSI()
+BI.RBI()
+BI.Bank_INDIA()
+
+Example:
+class GrandFather():
+    def Hello_GFather(self):
+        print("I am in GrandFather Class")
+class Father(GrandFather):
+    def Hello_Father(self):
+        print("I am in Father Class")
+class Child(Father):
+    def Hello_Child(self):
+        print("I am in Child Class")
+      
+ch=Child()
+ch.Hello_GFather()
+ch.Hello_Father()
+ch.Hello_Child()
+
+Example:
+class person():
+    def display(self):
+        print("Hello, This is class Person")
+class employee(person):
+    def printing(self):
+        print("Hello This is derieved class Employee")
+class programmer(employee):
+    def show(self):
+        print("Hello This is derieved class Programmer")
+
+p1=programmer()
+p1.display()
+p1.printing()
+p1.show()
+
+Example:
+class Animal:   
+    def eat(self):  
+      print('Eating...')
+class Dog(Animal):  
+   def bark(self):  
+      print('Barking...')
+class BabyDog(Dog):  
+    def weep(self):  
+        print('Weeping...')
+d=BabyDog()  
+d.eat()  
+d.bark()  
+d.weep()  
+
+LIVE USE CASES:
+Bank ==> CreditCard ==> Customer
+College ==> Course ==> Student
+Vehi ==> Car ==> SportsCar ==> Speed
+
+Multiple Inheritance:-
+You can derive a child class from more than one base (parent) class.
+
+Syntax:
+class DerivedClassName(Base1, Base2, Base3):  
+    <statement-1>  
+   -------------------------
+   -------------------------
+    <statement-N>   
+
+Outline of Multiple Inheritance:
+BaseClass1		BaseClass2
+
+	     DerievedClass
+
+Method Resolution Order (MRO)
+In the multiple inheritance scenario, any specified attribute is searched first in the current class. If not found, the search continues into parent classes in depth-first, left-right fashion without searching same class twice.
+
+MRO must prevent local precedence ordering and also provide monotonicity. It ensures that a class always appears before its parents and in case of multiple parents, the order is same as tuple of base classes.
+
+Syntax: (As per Realtime Project Implementation)
+class A:
+  pass
+
+class B():
+  pass
+
+class C(A,B):
+  pass
+
+def main():
+  obj1=C()
+
+if __name__=="__main__":
+  main()
+
+Example:
+class A:
+  def m(self):
+      print("m() from class A" )
+
+class B:
+  def m(self):
+      print("m() from class B" )
+
+class C(A,B):
+  pass
+
+def main():
+  obj1=C()
+  obj1.m()
+
+if __name__=="__main__":
+  main()
+
+Example:
+class A:
+  def m(self):
+      print("m() from class A" )
+
+class B:
+  def m(self):
+      print("m() from class B" )
+
+class C(B,A):
+  pass
+
+def main():
+  obj1=C()
+  obj1.m()
+
+if __name__=="__main__":
+  main()
+
+Example:
+class A:
+  def m(self):
+      print("m() from class A" )
+
+class B:
+  def m(self):
+      print("m() from class B" )
+
+class C(B,A):
+  def m(self):
+      print("m() from class C" )
+
+def main():
+  obj1=C()
+  obj1.m()
+
+if __name__=="__main__":
+  main()
+
+LIVE USE CASE
+Online	Manually	 Telephone     Mail
+
+	          ORDER
+
+class Online():
+    def Food_Order(self):
+        print("Welcome to Online Food Order")
+        print("Thank U")
+class Manually():
+    def Food_Order(self):
+        print("Welcome to Manual Food Order")
+        print("Thank U")
+class Telephone():
+    def Food_Order(self):
+        print("Welcome to Telephone Food Order")
+        print("Thank U")    
+class Mail():
+    def Food_Order(self):
+        print("Welcome to Mail Food Order")
+        print("Thank U")    
+class Order(Mail,Manually,Telephone,Online):
+    def Food_Order(self):
+        print("Welcome to Food Order")
+        print("Thank U")    
+    
+def main():
+    Obj=Order()
+    Obj.Food_Order()
+
+if __name__=="__main__":
+    main()

@@ -1,0 +1,640 @@
+PYTHON ITERATORS
+An iterator is an object that contains a countable number of values.  In Python, which implements the iterator protocol, which consist of the methods __iter__() and __next__().
+
+Iterator vs Iterable
+Lists, tuples, dictionaries, and sets are all iterable objects. They are iterable containers which you can get an iterator from. All these objects have a iter() method which is used to get an iterator.
+
+Example:
+for x in range(5):
+    print(x)
+
+Looping Through an Iterator
+We can also use a for loop to iterate through an iterable object:
+
+Example:
+PyTuple = ("Apple", "Banana", "Cherry")
+for item in PyTuple:
+  print(item)
+
+Example:
+PyList=[1,2,3,4]
+x=iter(PyList)
+print(x)#just it retruns object memory location
+print(next(x))
+
+Example:
+PyList=[1,2,3,4]
+x=PyList.__iter__()
+print(x)#just it retruns object memory location
+print(x.__next__())
+print(x.__next__())
+
+Example:
+PyTuple = ("Apple", "Banana", "Cherry")
+PyIt = iter(PyTuple)
+print(next(PyIt))
+print(next(PyIt))
+print(next(PyIt))
+
+Strings are also iterable objects, containing a sequence of characters
+Example: 
+Pystr="Banana"
+PyIt= iter(Pystr)
+print(next(PyIt))
+print(next(PyIt))
+print(next(PyIt))
+print(next(PyIt))
+print(next(PyIt))
+
+Create an Iterator
+The __iter__() method  must always return the iterator object itself.
+The __next__() method also allows you to do operations, must return the next item in the sequence.
+
+Example:
+class MyNumbers:
+  def __iter__(self):
+    self.a = 1
+    return self
+
+  def __next__(self):
+    x = self.a
+    self.a += 1
+    return x
+
+myclass = MyNumbers()
+myiter = iter(myclass)
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+
+StopIteration
+The example above would continue forever if you had enough next() statements, or if it was used in a for loop. To prevent the iteration to go on forever, we can use the StopIteration statement.
+
+In the __next__() method, we can add a terminating condition to raise an error if the iteration is done a specified number of times:
+
+Example:
+class MyNumbers:
+  def __iter__(self):
+    self.a = 1
+    return self
+
+  def __next__(self):
+    if self.a <= 10:
+      x = self.a
+      self.a += 1
+      return x
+    else:
+      raise StopIteration
+
+myclass = MyNumbers()
+myiter = iter(myclass)
+for x in myiter:
+  print(x)
+
+Example:
+class MyNumbers():
+    def __iter__(self):
+        self.a=1
+        return self
+    def __next__(self):
+        if self.a<=5:
+            x=self.a
+            self.a+=1
+            return x
+        else:                                                                      
+            raise StopIteration
+MM=MyNumbers()
+myiter=iter(MM)
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+
+        
+Implementing Own Iterator Class:
+Implementing Remote Control class that allows you to press next button to go to next channel.
+
+Example:
+class RemoteControl():
+    def __init__(self):
+        self.channels=['HBO','CNN','STAR','ABC','ESPN']
+        self.index=-1
+    def __iter__(self):
+        return self
+    def __next__(self):
+        self.index+=1
+        if self.index==len(self.channels):
+            raise StopIteration
+        return self.channels[self.index]
+r=RemoteControl()
+itr=iter(r)
+print(next(itr))
+print(next(itr))
+print(next(itr))
+print(next(itr))
+print(next(itr))
+
+PYTHON GENERATORS
+Python provides a generator to create your own iterator function. A generator is a special type of function which does not return a single value, instead, it returns an iterator object with a sequence of values. In a generator function, a yield statement is used rather than a return statement.
+
+Differences between Generator function and a Normal function
+1. Generator function contains one or more yield statement.
+2.Compared with class level iterators, generators are very easy to use
+3.Improves memory utilization and performance.
+4.Generators are best suitable for reading data from large number of large files
+5.Generators work great for web scraping and crawling.
+
+Yield vs. Return
+The Yield statement is responsible for controlling the flow of the generator function.
+The Return statement returns a value and terminates the whole function.
+
+Example:
+def MultipleYield():  
+    str1 = "First String"  
+    yield str1  
+    str2 = "Second string"  
+    yield str2  
+    str3 = "Third String"  
+    yield str3  
+Obj= MultipleYield()  
+print(next(Obj))  
+print(next(Obj))  
+print(next(Obj))  
+
+Example:
+def YieldUse():
+    PyStr1="PYTHON"
+    yield PyStr1
+    PyStr2="CYTHON"
+    yield PyStr2
+    PyStr3="JYTHON"
+    yield PyStr3
+
+#Generators are Iterators
+Obj=YieldUse()
+print(type(Obj))
+print(next(Obj))
+print(next(Obj))
+print(next(Obj))
+
+
+Example:
+def MultipleYield():  
+    str1 = "First String"  
+    return str1  
+    str2 = "Second string"  
+    yield str2  
+    str3 = "Third String"  
+    yield str3  
+Obj= MultipleYield()  
+print(next(Obj))  
+print(next(Obj))  
+print(next(Obj))
+
+Example:
+def Cube():
+    n=1
+    while n<=10:
+        result=n**3
+        n+=1
+        return(result)
+x=Cube()
+print(x)
+     
+Example:
+def Cube():
+    n=1
+    while n<=10:
+        result=n**3
+        n+=1
+        yield result
+x=Cube()
+for i in x:
+    print(i)
+
+Example: Generating Genetrator Object
+def Remote_Control():
+    yield "CNN"
+    yield "ABC"
+    yield "ESPN"
+itr=Remote_Control()
+print(itr) #<generator object Remote_Control at 0x000000F7D12EFC50>
+
+Example:Generator as Interator
+def Remote_Control():
+    yield "CNN"
+    yield "ABC"
+    yield "ESPN"
+itr=Remote_Control()
+print(next(itr)) 
+print(next(itr)) 
+print(next(itr)) 
+
+Example:
+def table(n):  
+    for i in range(1,11):
+        yield n*i  
+        i = i+1  
+for i in table(15):  
+    print(i)  
+
+Example:
+def table(n):  
+    for i in range(1,11):
+        return n*i  
+        i = i+1  
+print(table(5))
+
+Example:
+def NumGen(n):
+    x=1
+    while x<=n:
+        yield x
+        x=x+2
+Nums=NumGen(4)
+for i in Nums:
+    print(i)  
+
+Example:
+def FebGen():
+    x,y=0,1
+    while True:
+        yield x
+        x,y=y,x+y
+for i in FebGen():
+    if i<100:
+        print(i)
+    else:
+        break
+
+Example:
+from random import *
+def NumGen():
+    Nums="0123456789"
+    while True:
+        patt=''
+        for i in range(4):
+            patt+=choice(Nums)
+        yield patt
+for i in NumGen():
+    print(i)
+
+List Comprehension vs Generators Expression in Python
+List Comprehension
+It is one of the best ways of creating the list in one line of Python code. It is used to save a lot of time in creating the list.
+Example:
+print([j**2 for j in range(1,11)])
+
+Generator Expression
+It is one of the best ways to use less memory for solving the same problem that takes more memory in the list compression.
+Example:
+PyGe=(j**2 for j in range(1,11))
+for j in PyGe:
+    print(j, end=' ')
+
+Example:
+def infinite_sequence():  
+    num = 0  
+    while True:
+        yield num  
+        num += 1  
+for i in infinite_sequence():  
+    print(i)  
+
+Example:
+def infinite_sequence():  
+    num = 0  
+    while True:
+        return num  
+        num += 1  
+print(infinite_sequence())
+
+PYTHON CLOSURES:
+A Closure is a function object that remembers values in enclosing scopes even if they are not present in memory.
+
+Example:
+def OuterFun():
+    x=10
+    def InnerFun():
+        print(x)
+InnerFun()
+OuterFun()
+
+Example:
+def OuterFun():
+    x=10
+    def InnerFun():
+        print(x)
+InnerFun()
+OuterFun()
+
+Example:
+def OuterFun():
+    x=10
+    def InnerFun():
+        print(x)
+    return InnerFun()
+
+OO=OuterFun()
+print(OO)
+
+Example:
+def OuterFun():
+    x=10
+    def InnerFun():
+        y=20
+        Total=x+y
+        return Total
+    return InnerFun()#Executing function definition
+
+OO=OuterFun()
+print(OO)
+
+Example:
+def OuterFun():
+    x=10
+    def InnerFun():
+        y=20
+        Total=x+y
+        return Total
+    return InnerFun #Returing function reference
+
+OO=OuterFun()
+print(OO)
+
+
+Example:
+def OuterFun():
+    x=10
+    def InnerFun():
+        y=20
+        Total=x+y
+        return Total
+    return InnerFun #Returing function reference
+
+OO=OuterFun()
+print(OO.__name__)
+
+Example:
+def OuterFun():
+    x=10
+    def InnerFun():
+        y=20
+        Total=x+y
+        return Total
+    return InnerFun #Returing function reference
+
+OO=OuterFun()
+print(OO())
+
+NOTE:
+We executed inner function body outside its scope, this technique is called Closure.
+
+Example:
+ def Outer_Func():
+    Msg="PYTHON"
+    def Inner_Func():
+        print(Msg)
+    return Inner_Func
+My_Func=Outer_Func()
+My_Func()
+
+Example:
+def Outer_Func(msg):
+    message=msg
+    def Inner_Func():
+        print(message)
+    return Inner_Func
+hi_func=Outer_Func("Hi")
+hello_func=Outer_Func("Hello")
+hi_func()
+hello_func() 
+
+When we create closures:
+1. Nested Functions
+2. Nested Function must refer values in enclosing scope
+3. Enclosing function must return nested function
+
+Why to use Closures?
+1 We can avoid gloable values
+2 They provide some sort of data hiding.
+3 This helps us to reduce the use of global variables.
+4. We can implement in Decorators
+
+Functions are Objects
+Example:
+def Fun():
+    print("Hello")
+print(Fun)
+Gun=Fun
+print(Gun)
+Gun()
+
+PYTHON DECORATORS:
+Decorator is a function that takes another function and extends the behavior of the latter function without explicitly modifying it.
+OR
+Decorator is a function that can add additional functionality to an existing function.!
+
+OUTLINE:
+INPUT FUNCTION ==> DECORATOR FUNCTION ==> OUTPUT FUNCTION with Extended Functionality
+
+Example:
+def NorFun():
+    print("Feature-1")
+NorFun()
+
+Example:
+def DecFun(func):
+    def Addon():
+        func()
+        print("Feature-2")
+        print("Feature-3")
+    return Addon
+
+def NorFun():
+    print("Feature-1")
+NorFun=DecFun(NorFun) #=> Best for Debug
+NorFun()
+
+Example:
+#Withoutmodifying the existing function
+#I want to add two features, that time
+#Decorators required
+def NoramlFun():
+    print("It has Feature-1")
+NoramlFun()
+
+
+
+def DecFun(func):
+    def Addon():
+        func()
+        print("It has Feature-2")
+        print("It has Feature-3")
+    return Addon
+
+@DecFun#Decorator
+def NoramlFun():
+    print("It has Feature-1")
+#NoramlFun=DecFun(NoramlFun)
+NoramlFun()
+
+
+Example:
+def DecFun(func):
+    def Addon():
+        func()
+        print("Feature-2")
+        print("Feature-3")
+    return Addon
+
+@DecFun
+def NorFun():
+    print("Feature-1")
+NorFun() #=> Best for Debug
+
+Example:
+def NormalFun():
+    print("Feature-1")
+NormalFun()
+
+Example:
+def AddFun(func):
+    def Inner():
+        func()
+        print("Feature-2")
+    return Inner
+
+def NormalFun():
+    print("Feature-1")
+
+NormalFun=AddFun(NormalFun)#=> Best for Debug
+NormalFun()
+
+Example:
+def AddFun(func):
+    def Inner():
+        func()
+        print("Feature-2")
+    return Inner
+
+@AddFun#Decorator
+def NormalFun():
+    print("Feature-1")
+NormalFun()#=> Best for Debug
+
+Example:
+def MyDecor(func):
+    def MyInner():
+        print("Added New Functionality")
+    return MyInner
+
+@MyDecor
+def MyOrginal():
+    print("My Original Function")
+
+MyOrginal()
+
+Example:
+def MyDecor(func):
+    def MyInner():
+        print("Added New Functionality")
+        func()
+    return MyInner
+
+@MyDecor
+def MyOrginal():
+    print("My Original Function")
+MyOrginal()
+
+Example:
+def Success(func):
+    def Study():
+        print("Prepare Well")
+        func()
+        print("Congratulations..!!")
+    return Study
+
+@Success
+def MyFun():
+    print("Say Hey You are PASS")
+MyFun()
+
+Example:
+def Div(x,y):
+    return x/y
+print(Div(2,1))
+print(Div(2,2))
+
+Example:
+def Div(x,y):
+    return x/y
+print(Div(2,1))
+print(Div(2,0))#ZeroDivisionError
+
+Example: with Decorator
+def DivUpdate(func):
+    def Inner(a,b):
+        if b==0:
+            print("SorryUnableToCompute")
+        else:
+            return func(a,b)
+    return Inner
+
+@DivUpdate #Callable
+def Div(a,b):
+    return a/b
+print(Div(2,1))##=> Best for Debug
+Div(2,0)
+print(Div(2,2))
+
+DivUpdate is a decorator, decorator function added some new functionality to the original function We can use the @ symbol along with the name of the decorator function and place it above the definition of the function to be decorated.
+
+Using Multiple Decorators:
+def MyDecor_Two(func):
+    def MyInner_Two():
+        func()
+        print("New Functionality for Decorator Two")
+    return MyInner_Two
+
+def MyDecor_One(func):
+    def MyInner_One():
+        func()
+        print("New Functionality for Decorator One")
+    return MyInner_One
+
+@MyDecor_Two
+@MyDecor_One
+def MyOrginal():
+    print("My Original Function")
+MyOrginal()
+
+
+INTERVIEW QUESTIONS:
+Example:Output of the following Script..!!**
+def Cal(n):
+    def Mult(x):
+        return x*n
+    return Mult
+a=Cal(5)
+b=Cal(5)
+print(a(b(2)))
+
+Explanation:
+Cal(n) returns Mult, which is a function
+So, Cal(5) = Mult (x) with n=5
+b(2) = Mult (2) with n=5 = 10
+a(b(2))=a(10)=Mult (10) with n=5
+So
+Ans is 50
+
+Example: Functions are first-class citizens in Python
+def myfunc(a, b):
+    return a + b
+funcs = [myfunc]
+print(funcs[0])
+print(funcs[0](2, 3))

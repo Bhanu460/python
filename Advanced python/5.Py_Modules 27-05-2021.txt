@@ -1,0 +1,217 @@
+WORKING WITH PYTHON MODULES (MODULARITY)
+Module is anyone which ends with .py Extension.
+OR	
+A module is a file consisting of Python code. A module can contains functions, classes and variables. 
+
+Example:MyMod.py
+def MyFun1():
+  print("Welcome to Python & Advance")
+  print("Modular Programming")
+  return()
+def MyFun2():
+  print("It is Perfect Feature")
+  print("Thank U ")
+  return()
+
+The import Statement
+You can use any Python source file as a module by executing an import statement in some other Python source file. 
+
+Syntax:
+import module1[, module2[,... moduleN]
+
+Example:moduletwo.py
+import MyMod
+MyMod.MyFun1()
+MyMod.MyFun2()
+print("END")
+
+Import with renaming OR module aliasing
+We can import a module by renaming it.
+
+Syntax:
+import ModName as NewModName
+
+Example:modulethree.py
+def add(a,b):
+  return a+b
+def sub(a,b):
+  return a-b
+def prod(a,b):
+  return a*b
+
+Example:modulefour.py
+import modulethree as mt
+Sum=mt.add(10,20)
+print("Sum of the numbers is: " ,Sum)
+dif=mt.sub(20,10)
+print("Difference of the numbers is: " ,dif)
+prd=mt.prod(10,10)
+print("Difference of the numbers is: " ,prd)
+
+The from...import Statement
+Python's from statement lets you import specific attributes from a module into the current namespace.
+
+Syntax:
+from modname import name1[, name2[, ... nameN]]
+
+Example:mfive.py
+a="BigData"
+b="Hadoop"
+c="Spark"
+d="Data Science"
+print(a,b,c,d)
+print(a,d)
+
+# Grab the whole module:
+>>>import mfive (Everything Imported to RAM)
+
+ # Access its attributes
+>>>mfive.a, mfive.c
+('Big Data','Spark')
+
+# Copy multiple names out
+from mfive import a, b, c
+print(b, c)
+
+Using wildcard imports (from … import *)
+It is also possible to import all properties from a module into the current namespace.
+
+Syntax:
+from modname import *
+
+Example:
+def Add1(a,b):
+    return(a+b)
+def Sub1(a,b):
+    return(a-b)
+def Pro1(a,b):
+    return(a*b)
+def Div1(a,b):
+    return(a/b)
+def FDiv1(a,b):
+    return(a//b)
+
+Example:
+from MyProg1 import *
+print(Add1(1,2))
+print(Sub1(1,2))
+print(Pro1(20,2))
+
+NOTE:
+Name starts & ends with two underscore notations then the identifier is language defined special name. It is also known as magical methods.
+
+NOTE:
+Every module has by default some properties are added automatically.
+1 __builtins__
+2 __doc__
+3 __file__
+4 __package__
+5 __name__
+
+Example:
+x=500
+def fun1():
+  print("Hello Functions")
+  print(__builtins__)
+  print(__doc__)
+  print(__file__)
+  print(__name__)
+  print(__package__)
+fun1()
+print("The value of x is: " ,x)
+
+Python library:
+It is called as package. Libraries are open sourced.
+OR
+A library is used loosely to describe a collection of the core modules.
+1. NumPy		2. SciPy		3. Pandas 
+4.Matplotlib 	5. Seaborn	6. Bokeh
+7. Plotly 		8. SciKit-Learn	9.Theano
+10. TensorFlow. 	11. FANN		12. PyRenn 
+13. PyAnn	14. NeuroLab	https://docs.python.org/2/library/
+
+Working with Packages in Python
+It is collection of modules.
+OR
+Any folder or directory which contains __init__.py file , then we call that folder or directory as a Python Package
+
+PIC: PackageModuleStructure:
+
+Importing module from a package:
+We can import modules from packages using the dot (.) operator. For example, if want to import the start module from above Structure:
+
+Syntax:
+import Package.ModuleName.FunName
+
+Creating a pakage(As per Live Project)
+1 Goto PYTHON Installed location.
+>>> import os 
+>>> os.getcwd()
+C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python38-32
+2 Create a Directory/Folder and Provide any name (MyPackage)
+3 Open Notepad save with, __init__ .py file in the directory (PYTHON recognize a Package)
+4. Create a python file in that Package (MyDemo.py)
+
+Example:
+def MyFun():
+   print("Welcome to Packages")
+   print("Packages Are Dirs/Folders")
+   return
+MyFun()
+Save with MyDemo.py Extension..!!
+
+Executing a Module from a Package:
+>>> import MyPackage.MyDemo
+>>> MyPackage.MyDemo.MyFun()
+>>> import MyPackage.MyDemo as nit
+>>> nit.MyFun()
+>>> from MyPackage.MyDemo import MyFun
+>>> MyFun()
+
+Creating SubPackage:
+1. Create a Folder/Directory inside existing package and Provide A name (SubPackage) 
+2. Create __init__ .py file in the directory  (PYTHON recognize as Package)
+3. Create a python file in that (MyDemo.py)
+
+Executing a Module from a Sub-Package:
+>>> import MyPackage.SubPackage.MyDemo
+>>> MyPackage.SubPackage.MyDemo.MyFun()
+>>> import MyPackage.SubPackage.MyDemo as nit
+>>> nit.MyFun()
+>>> from MyPackage.SubPackage.MyDemo import MyFun
+>> MyFun()
+
+Popular Python Packages:
+1. Requests ==> The most famous http library
+2. wxPython==> A gui toolkit for python.
+3. Pillow==> A friendly fork of PIL (Python Imaging Library) for  images.
+4. BeautifulSoup==>xml and html parsing library is very useful for beginners.
+5. Twisted==> The most important tool for any network application developer
+
+NOTE POINTS:
+1.A group of logical statements with a name is called a function
+2.A group of functions saved in .py file , is called Module
+3.A group of Modules is nothing but Library
+4. A group of Libs and Modules is called package with __init__.py
+
+eval()
+eval Function take a String and evaluate the Result.
+
+Syntax:
+eval(expression)
+
+Parameters
+expression - this string as parsed and evaluated as a Python expression
+
+Example:
+x=eval("18-90+87")
+print(x)
+
+Example:
+x=eval(input("Enter Expression: ")) 
+print(x)
+
+Example:
+PyData=eval(input("Enter Data: "))
+print(type(PyData))
+print(PyData)

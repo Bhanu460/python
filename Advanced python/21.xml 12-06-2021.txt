@@ -1,0 +1,201 @@
+WORKING WITH PYTHON XML PROCESSING
+XML is a portable, open source language that allows programmers to develop applications that can be read by other applications, regardless of operating system and/or developmental language.
+
+Creating XML file or Downloading XML file:
+We have created a sample XML file that we are going to parse.
+Step 1) Goto google type sample xml file
+https://msdn.microsoft.com/en-us/library/ms762271(v=vs.85).aspx
+
+How to Create xml file?
+<?xml version="1.0"?>
+<catalog>
+   <book id="bk101">
+      <author>Gambardella, Matthew</author>
+      <title>XML Developer's Guide</title>
+      <genre>Computer</genre>
+      <price>44.95</price>
+      <publish_date>2000-10-01</publish_date>
+      <description>An in-depth look at creating applications 
+      with XML.</description>
+   </book>
+</catalog>
+
+Save the above XML source code with books.xml @ spyder installed location..!!
+
+Example1:Reading xml file data..!!
+import xml.etree.cElementTree as ET
+tree=ET.ElementTree(file='books.xml')
+root=tree.getroot()
+for data in root:
+  print(data.get('id'))
+
+NOTE:
+Go to books.xml file, change book as magzine and run the following script.
+
+Example2:Display Book IDs
+import xml.etree.cElementTree as ET
+tree=ET.ElementTree(file='books.xml')
+root=tree.getroot()
+
+for data in root:
+  if(data.tag=='book'):
+    print(data.get('id'))
+ 
+Example3:Display magzine ID..!!
+import xml.etree.cElementTree as ET
+tree=ET.ElementTree(file='books.xml')
+root=tree.getroot()
+
+for data in root:
+  if(data.tag!='book'): 
+    print(data.get('id'))
+
+Example4: Reading the data from .xml file..!!
+import xml.etree.cElementTree as ET
+tree=ET.ElementTree(file='Books.xml')
+root=tree.getroot()
+
+for books in root:
+  if(books.tag=='book'):
+    print("Book ID is: "+books.get('id'))
+    print("----------------------")
+    for attr in books:
+      if(attr.tag=="author" or attr.tag=="title" or attr.tag=="price"):
+        print(attr.text)
+    print("***************")
+
+Example5: Writing data in Other file...!!
+import xml.etree.cElementTree as ET
+tree=ET.ElementTree(file='Books.xml')
+root=tree.getroot()
+
+for books in root:
+  if(books.tag=='book'):
+    fo=open(books.get('id') + '.txt','w')
+    #print("Book ID is: "+books.get('id'))
+    #print("----------------------")
+    for attr in books:
+      if(attr.tag=="author" or attr.tag=="title" or attr.tag=="price"):
+        #print(attr.text)
+    #print("***************")
+        fo.write(attr.tag+' : '+attr.text)
+        fo.write('\n')
+
+WORKING WITH PYTHON JSON
+JSON stands for JavaScript Object Notation
+JSON is a lightweight data-interchange format
+JSON is "self-describing" and easy to understand
+JSON is language independent 
+
+Why use JSON?
+Since the JSON format is text only, it can easily be sent to and from a server, and used as a data format by any programming language.
+
+JSON Syntax Rules
+JSON syntax is derived from JavaScript object notation Syntax:
+1 Data is in name/value pairs
+2 Data is separated by commas
+3 Curly braces hold objects
+4 Square brackets hold arrays
+
+JSON Uses JavaScript Syntax
+Because JSON syntax is derived from JavaScript object notation.!
+
+In JSON, string values must be written with double quotes:
+{ "name":"Raju" }
+
+JSON Files
+The file type for JSON files is ".json"
+The MIME type for JSON text is "application/json"
+
+JSON vs XML
+Both JSON and XML can be used to receive data from a web server.
+
+JSON Example
+{"employees":[
+    { "firstName":"John", "lastName":"Doe" },
+    { "firstName":"Anna", "lastName":"Smith" },
+    { "firstName":"Peter", "lastName":"Jones" }
+]}
+
+XML Example
+<employees>
+    <employee>
+        <firstName>John</firstName> <lastName>Doe</lastName>
+    </employee>
+    <employee>
+        <firstName>Anna</firstName> <lastName>Smith</lastName>
+    </employee>
+    <employee>
+        <firstName>Peter</firstName> <lastName>Jones</lastName>
+    </employee>
+</employees>
+
+JSON is Unlike XML Because
+1 JSON doesn't use end tag
+2 JSON is shorter
+3 JSON is quicker to read and write
+4 JSON can use arrays
+
+$pip install simplejson
+$pip show simplejson
+$pip install -U simplejson (for Updating)
+
+Example:
+import json
+print(dir(json))
+
+Example:
+import simplejson
+print(dir(simplejson))
+
+Example:
+book={}
+book['raju']={'name':'raju','address':'Ameerpet HYD','Phone':9866698666}
+book['tom']={'name':'tom','address':'5 Green Street NY','Phone':9866612345}
+import json
+print(type(book))#<class 'dict'>
+s=json.dumps(book)
+print(type(s))#<class 'str'>
+print(s)
+
+Example:
+book={}
+book['raju']={'name':'raju','address':'Ameerpet HYD','Phone':9866698666}
+book['tom']={'name':'tom','address':'5 Green Street NY','Phone':9866612345}
+import json
+s=json.dumps(book)
+with open("Book.txt",mode='w',encoding='utf-8')as MyFile:
+    MyFile.write(s)
+
+Example:
+book={}
+book['raju']={'name':'raju','address':'Ameerpet HYD','Phone':9866698666}
+book['tom']={'name':'tom','address':'5 Green Street NY','Phone':9866612345}
+import json
+s=json.dumps(book)
+with open("Book.txt",mode='r',encoding='utf-8')as MyFile:
+    s=MyFile.read()
+    print(s)#String
+book=json.loads(s)
+print(book)#Dictionary
+print(type(book))
+print(book['raju'])#complete addresss book
+print(book['raju']['Phone'])
+
+Example:
+book={}
+book['raju']={'name':'raju','address':'Ameerpet HYD','Phone':9866698666}
+book['tom']={'name':'tom','address':'5 Green Street NY','Phone':9866612345}
+import json
+print(type(book))
+SS=json.dumps(book)#converting dict to string format
+print(type(SS))
+try:
+    with open("Stduent.txt",mode='w',encoding='utf-8') as MyFile:
+        MyFile.write(SS)
+        print("DataLoadedSuccessfully..!!")
+except IOError:
+    print("SorryFileUnableToCrete")
+finally:
+    print("FinallyBlockSuccess..!!")  
+

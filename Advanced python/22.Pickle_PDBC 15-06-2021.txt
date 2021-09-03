@@ -1,0 +1,277 @@
+Python Object Serialization
+What is Pickle?
+Pickle is an inbuilt python library for serializing and de-serializing Python object.
+OR
+Pickle is used for serializing and de-serializing Python object structures, also called marshalling or flattening. 
+OR
+Pickling is used to store python objects. This means things like lists, dictionaries, class objects, and more.
+
+Features of Serialization:
+1. Python Objects convert into Byte Stream format
+2. Over a network byte stream easily transfor
+3. Highly secured, good performance
+4. Machine easily understandable & Convertable
+
+Storing data with pickle
+You can pickle objects with the following data types:
+Booleans, Integers, Floats, Complex numbers, Strings, Tuples, Lists, Sets, and Dictionaries etc..!!
+
+Serialization:
+It is the process of converting a object hierarchy into a stream of bytes to store in a file. 
+
+dump method:
+Saves the object to the file stream with the optional parameter of protocol.
+
+Syntax:
+dump(object,file,protocol)
+
+Example: (Pickling)
+import pickle
+data={'a':[1,2,3,4],'b':'NareshIT',(1,2):[1,2]}
+with open("Data.pkl",mode="wb") as FPK:
+    pickle.dump(data,FPK)
+print("PickleFileCratedSuccessfully")
+print(data)
+del data
+print(data)
+
+Example:
+import pickle
+PyData={'a':[1,2,3,4],'b':"NareshIT",'c':(1,2)}
+try:
+    with open("Data.pkl",mode='wb') as FPK:
+        pickle.dump(PyData,FPK)
+    print("DataSerializedSuccessfully...!!")
+except IOError:
+    print("SorryDataUnableToSerialize")
+finally:
+    print("FinallyBlockSuccess")
+
+Unpickling:
+It is the inverse of Pickling process where a byte stream is converted into an object hierarchy.
+
+load method:
+Loads the next object in the file stream and returns the object
+
+Syntax:
+pickle.load()
+
+Example:(De-Serialization)
+import pickle
+data ={'a':[1,2,3],'b':'NareshIT',(1,2):[1,2]}
+with open("Hei.pkl",mode='wb') as FPK:
+    pickle.dump(data,FPK)
+del data
+with open("Hei.pkl",mode='rb')as FPK:
+    data=pickle.load(FPK)
+print(data)
+
+Example:
+import pickle
+try:
+    with open("Data.pkl",mode='rb') as FPK:
+        PyData=pickle.load(FPK)
+    print(PyData)#This is printing in Object format
+    print("DataDe-SerializedSuccessfully...!!")
+except IOError:
+    print("SorryDataUnableToDeserialize")
+finally:
+    print("FinallyBlockSuccess")
+
+Pickle Limitations:
+1. It doesn't save objects code, only it's attributes values
+2. It cannot store file handles or connection sockets 
+
+
+Python-Data Base Conmmunications(PDBC):-
+It stores a collection of data. Each database has one or more distinct APIs for creating, accessing, managing, searching and replicating the data it holds. RDBMS store and manage huge volume of data. 
+
+You can choose the right database for your application. Python Database API supports a wide range of  database servers:
+1. MySQL 2.  PostgreSQL 3. Microsoft SQL Server 
+4. Informix   5. Oracle  6. Sybase  7. SQLite  
+8. MongoDB  9.AnyBigData
+
+What Can SQL do?
+1. SQL can execute queries, retrieve data, insert, update and delete records.
+2. SQL can create new databases tables, SP, views and set permissions
+
+Most Important SQL Commands:
+SELECT, UPDATE, DELETE, INSERT INTO, ALTER DB, Table CREATE TABLE,  DROP TABLE, INDEX..!!
+
+Step1: Install PYTHON 
+Step2: Install MySQL (8.0 or later) 
+https://dev.mysql.com/downloads/mysql/
+https://sourceforge.net/projects/mysql-python/files/mysql-python/1.2.3/MySQL-python-1.2.3.win32-py2.7.msi/download
+
+Step3: MySQL Driver
+$python -m pip install mysql-connector 
+
+Test MySQL Connector
+To test if the installation was successfull,
+Example:
+import mysql.connector
+print(dir(mysql.connector))
+
+Syntax:
+mydb = mysql.connector.connect(host="localhost",
+  user="yourusername", password="yourpassword",database="YourDBName")
+
+Syntax:
+mydb = mysql.connector.connect(host="127.0.0.1",
+  user="yourusername", password="yourpassword",database="YourDBName")
+
+Create Connection
+Start by creating a connection to the database.
+Use the username and password from your MySQL database:
+
+import mysql.connector
+mydb = mysql.connector.connect(host="localhost",user="root",password="root")
+print("MySQL-Server-ConnectedSuccessfully")
+
+Python MySQL Create Database:
+To create a database in MySQL, use the "CREATE DATABASE" statement:
+
+Example:
+import mysql.connector
+mydb = mysql.connector.connect(host="localhost",user="root",password="root")
+mycursor = mydb.cursor()
+mycursor.execute("CREATE DATABASE STUDENTS")
+print("DataBaseCreatedSuccessfully")
+
+NOTE:
+A cursor is a temporary work area created in the system memory when a SQL statement is executed. A cursor contains information on a select statement and the rows of data accessed by it.
+
+Check if Database Exists
+Check if a database exist by listing all databases, by using the "SHOW DATABASES" statement:
+
+Example:
+import mysql.connector
+mydb = mysql.connector.connect(host="localhost",user="root",passwd="root")
+mycursor = mydb.cursor()
+mycursor.execute("SHOW DATABASES")
+for data in mycursor:
+  print(data) 
+
+To use particular database:
+mysql> use student
+OR
+mysql> connect student
+
+Python MySQL Create Table
+Creating a Table
+To create a table in MySQL, use the "CREATE TABLE" statement.
+
+Example:
+import mysql.connector
+mydb = mysql.connector.connect(host="localhost",user="root",passwd="root", database='student')
+mycursor = mydb.cursor()
+mycursor.execute("CREATE TABLE Students (name VARCHAR(255), address VARCHAR(255))")
+print("Table Created Successfully")
+
+mysql> show tables;
+mysql> desc student;
+
+Check if Table Exists
+You can check if a database exist by listing all tables in your database by using the "SHOW TABLES" statement:
+
+Example:
+import mysql.connector
+mydb = mysql.connector.connect(host="localhost",user="root",passwd="root", database='student')
+mycursor = mydb.cursor()
+mycursor.execute("SHOW TABLES")
+for data in mycursor:
+  print(data)
+
+Python MySQL Insert Into Table
+To fill a table in MySQL, use the "INSERT INTO" statement.
+
+
+Example:
+
+import mysql.connector
+#mydb = mysql.connector.connect(host="localhost",
+  #user="yourusername", password="yourpassword",database="YourDBName")
+
+MyDb=mysql.connector.connect(host="localhost",
+                          user="root",
+                          password='root')
+MyCursor=MyDb.cursor()
+MyCursor.execute('show databases')
+for data in MyCursor:
+    print(data)
+print("MySQLServerConnectedSuccessfully..!!")
+
+Example:
+import mysql.connector
+mydb=mysql.connector.connect(host="127.0.0.1",
+                             user="root",
+                             passwd="root",
+                             database='student')
+mycursor=mydb.cursor()
+mycursor.execute("insert into students values(1,'SARA')")
+print("DataInsertedSuccessfully")
+
+NOTE: 
+The above script executed successfully but data not saved in the table, that time we must 'commit' the table..!!
+
+Example:
+import mysql.connector
+mydb=mysql.connector.connect(host="127.0.0.1",
+                             user="root",
+                             passwd="root",
+                             database='std')
+mycursor=mydb.cursor()
+mycursor.execute("insert into emp values(1,'SARA')")
+mydb.commit()
+print("DataInsertedSuccessfully")
+
+Insert Data in Multiple Rows
+To insert multiple rows into a table, use the executemany() method.
+
+Example:
+import mysql.connector
+mydb = mysql.connector.connect(host="localhost",user="root",passwd="root", database='student')
+mycursor = mydb.cursor()
+sql = "INSERT INTO students (name, address) VALUES (%s, %s)"
+val = [
+  ('Peter', 'Lowstreet 4'),
+  ('Amy', 'Apple st 652'),
+  ('Hannah', 'Mountain 21'),
+  ('Michael', 'Valley 345'),
+  ('Sandy', 'Ocean blvd 2'),
+  ('Betty', 'Green Grass 1'),
+  ('Richard', 'Sky st 331'),
+  ('Susan', 'One way 98'),
+  ('Vicky', 'Yellow Garden 2'),
+  ('Ben', 'Park Lane 38'),
+  ('William', 'Central st 954'),
+  ('Chuck', 'Main Road 989'),
+  ('Viola', 'Sideway 1633')
+]
+mycursor.executemany(sql, val)
+mydb.commit()
+print("Data Inserted Successfully")
+
+Python MySQL Select From:
+To select from a table in MySQL, use the "SELECT" statement:
+Select all records from the "students" table, and display the result:
+
+Example:
+import mysql.connector
+mydb = mysql.connector.connect(host="localhost",user="root",passwd="root", database='student')
+mycursor = mydb.cursor()
+mycursor.execute("SELECT * FROM students")
+for data in mycursor:
+  print(data)
+
+Selecting Columns
+To select only some of the columns in a table, use the "SELECT" statement followed by the column name(s):
+
+Example:
+import mysql.connector
+mydb = mysql.connector.connect(host="localhost",user="root",passwd="root", database='student')
+mycursor = mydb.cursor()
+mycursor.execute("SELECT name, address FROM students")
+myresult = mycursor.fetchall()
+for x in myresult:
+  print(x)

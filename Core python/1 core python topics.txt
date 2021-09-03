@@ -1,0 +1,72 @@
+PreCorePython
+What is Python?
+Why Python?
+Python Featuers
+Why Python General Purpose Language
+What is scripting?
+Why Scripting?
+Types of Scripting?
+Diff betwee Scripting & Pls
+MulTiparadigm
+IDLE
+Python Run Modes
+Ineractive Run Mode
+Script Run Mode
+print()
+input()
+Python Flavors
+Diff betwee Py VS JAVA
+Qutotatoins
+Python keywords
+SingleLoneUnderScore
+Comments
+Python Shell
+Python file Extensions
+Python Inside
+PyCharm
+Anaconda
+Spyder
+Jupyter
+Google-CO-Lab
+FAQS
+
+CORE PYTHON
+Variables
+Constants
+Data types
+swap
+del
+Mnemonic variables
+Binary OCtal Hexa literals
+PEMDAS
+PDB
+Type Casting
+Diffetent functions
+string formatting
+indentation
+python libs
+python operators
+Py Control Structures
+Sequential Control Structures
+Selective Controls
+if
+if else:
+    if elif else:
+        inner
+        negativve
+        break & Continue
+Ierative 
+for
+while
+inner loops
+break & Continue
+pass
+What is data
+strings in Python
+List in Python
+Tuple in Python
+set in Python
+frozenset in Python
+dictionary in Python
+Some reviews posted
+doubt sessio

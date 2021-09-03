@@ -1,0 +1,316 @@
+How to generate PDF using PYTHON:
+We are going to learn how to generate PDF using python. Python has many supporting libraries and world's largest community. Sometimes we need to convert our text files into PDFs.
+
+Installation:
+$pip install fpdf
+
+Example:
+from fpdf import FPDF
+pdf = FPDF()
+pdf.add_page()
+pdf.set_font('Arial',size=25)
+pdf.cell(200,100,txt='Hello, You are in www.nareshit.com ', align='C')
+pdf.output("txtpdf.pdf")
+print("Say Hey PDF File Creted Successfully")
+
+NOTE:
+1 We import FPDF and create an object for it. Now we create a page. we set font_size, font_family. align represents the position of content in the cell, “C” -center, “R”-right, “L”-left.
+2 pdf.output() method generate the output file. we need to give the output file name.
+
+Generate pdf file from text file:
+Example:
+from fpdf import FPDF
+f = open('Data.txt','r')
+content = ''
+for i in f:
+    content =i
+pdf = FPDF()
+pdf.add_page()
+pdf.set_font('Arial',size=18)
+pdf.cell(100,10,txt=content,align='C')
+pdf.output("txtpdf.pdf")
+
+NOTE:
+open() helps us to grab our text file from our current directory in our system. ‘r’ represents the mode of the file
+Created one string empty variable "content" which helps us to store our text from the text file. 
+Used here a for loop to get that text from textfile and store it into "content".
+pdf.cell() we reassign the txt parameter to "content" because we were storing the data in a variable content.
+
+What is QR Code?
+Quick Response code was firstly designed in 1994 by Hara Masahiro in Japan in the automotive industry. It is a type of barcode matrix that can help us to store the details. It is a two-dimensional barcode that is readable by smartphones. It allows to encode over 4000 characters in a two dimensional barcode. We can store every detail of us in the form of QR code that may be personal details, product details, other info.
+
+How to generate QR code in python
+This is a very simple step by step guide to generating QR code in python. we will discuss
+1 Generate QR code
+2 Generate QR code with links
+3 Styling your QR code
+4 Generate QR code with user input data
+5 Read QR code data using python
+
+Generate QR code
+Generate a QR code in python is very simple. Before we generate our QR code, we need to install these below packages.
+$pip install qrcode #To generate QR code
+$pip install Pillow #To manage Images
+
+Example:
+import qrcode
+qr = qrcode.make('Hello QR World') 
+qr.show()
+qr.save('hello.png')
+
+Generate QR code with links
+We can generate a QR code with hyperlinks.
+
+Example:
+import qrcode
+data = 'www.nareshit.com'
+qr = qrcode.make(data)
+qr.save('nit.png')
+qr.show()
+
+Styling your QR code
+Well, we generate a QR code with default colors like background white and foreground with black.  I need a QR code with my favorite colors.
+
+
+Example:
+import qrcode
+qr = qrcode.QRCode(
+    version=5,
+    box_size=5,
+    border=2
+)
+data = 'www.nareshit.com'
+qr.add_data(data)
+qr.make(fit=True)
+img = qr.make_image(fill_color='green',back_color='white')
+img.save('nit.png')
+
+Explanation:
+qrcode.QRCode() will take 3 parameters like version, box_size, border.
+version represents the size of the QR code. It is a range of 1 to 40.
+border represents the border of the QR code.
+box_size represents the box size of the QR code.
+qr.make_image(fill_color=’green’,back_color=’white’) take 2 parameters. Here we can stylish our QR code.
+fill_color represents the foreground color i,e pattern color of QR code.
+back_color represents the background color. 
+
+Generate QR code with user input data
+Example:
+import qrcode
+qr = qrcode.QRCode(
+    version=5,
+    box_size=5,
+    border=2
+)
+name = input('Enter Name:')
+age = int(input('Enter Age:'))
+Education = input('Enter Ed.Qualification:')
+data = {'name':name,'age':age,'edu':Education}
+qr.add_data(data)
+qr.make(fit=True)
+img = qr.make_image(fill_color='black',back_color='white')
+img.save('student.png')
+img.show()
+
+$pip install pyzbar
+
+Read QR code data using python
+Example:
+import qrcode
+from pyzbar.pyzbar import decode
+from PIL import Image
+import ast
+data = decode(Image.open('student.png'))
+info = data[0].data.decode('ascii')
+data = ast.literal_eval(info)
+#print(type(data))
+print(data['name'].upper())
+print(data['age'])
+
+pyzbar helps us to decode our QR code.
+ast help us to convert string to dictionary format.
+Pillow helps us to manage our images.
+
+Our QR code data encoded as binary code so we need to decode it by using pyzbar. Our data is in string format but we have to separate our data like name, age, and Edu. so we need to convert that output string to a dictionary. so we use ast.
+
+Most Common Errors in PYTHON Programming:
+1. Name Error:
+A NameError means that Python tried to use a variable or function name, Because there's no such name core defined in your code.
+
+Example:
+Traceback (most recent call last):
+  File "<pyshell#2>", line 1, in <module>
+    y
+NameError: name 'y' is not defined
+
+NameError ==> It is Error Code 
+name 'y' is not defined ==> Error Message
+
+2. Attribute Error:
+AttributeError can be defined as an error that is raised when an attribute reference or assignment fails.
+These errors are generally raised when an invalid attribute reference is made.
+Example:
+>>> PyList=[1,2,3,4,5]
+>>> PyList.Append(6)
+Traceback (most recent call last):
+  File "<pyshell#4>", line 1, in <module>
+    PyList.Append(6)
+AttributeError: 'list' object has no attribute 'Append'
+
+3. Syntax Error:
+Syntax errors are the most basic type of error. They arise when the Python parser is unable to understand a line of code. Most syntax errors are types, incorrect indentation, or incorrect arguments. 
+
+Example:
+File "Bigdata.py", line 201
+    cdata=table[0]
+             ^
+SyntaxError:invalid syntax
+
+4. Module Not Found Error:
+A ModuleNotFoundError is raised when Python cannot successfully import a module. This error is encountered when you forget to install a dependency for a project.
+
+Example:
+>>> import sklearn
+Traceback (most recent call last):
+  File "<pyshell#0>", line 1, in <module>
+    import sklearn
+ModuleNotFoundError: No module named 'sklearn'
+
+5. EOL Error
+EOL stands for End Of Line. This error means that there was an open quote somewhere, but the line ended before a closing quote was found.
+
+Example:
+>>> print("Hello
+SyntaxError: EOL while scanning string literal
+
+6. Indentation Error
+The indentation in Python is very important. Python uses indentation to indicate a block of code. Indentation refers to the spaces at the beginning of a code line. Indentation Error generally occurs when the code contains a mix of both tabs and spaces for indentation.
+
+Example:
+if x>0:
+print(x)
+ else:
+print(x)
+SyntaxError: unindent does not match any outer indentation level
+
+Raju Sir Coding challenge
+There are 100 doors, In the first iteration, we will open all doors and in the next iteration, we will close the doors. The instructions are given below.
+No.of doors — 100 doors
+1,2,3,4_,_________________100 – open
+2,4,6,_,___________100 -close
+3,6,9_,__________________ 99 – open
+4,8,12_,__________________100 -close
+And finally, calculate the below
+#calculate No.of doors opened
+#calculate No. of doors closed
+
+Example:
+c = 'close'
+p ='open'
+j =1
+l = 1
+n=100 # No.of Rooms
+open_door = 0
+close_door =0
+ 
+while l<n:
+    for i in range(0,n+1,j):
+        if i==0:
+            print('Iteration:',j)
+            continue    
+        if j%2!=0 :
+            print(i,p)
+            open_door +=1
+        else:
+            print(i,c)
+            close_door +=1
+    print('')
+    l+=1
+    j+=1
+if n%2==0:   
+    print('No.of Doors opened:',open_door)
+    print('No.of Doors Closed:',close_door+1)
+else:
+    print('No.of Doors opened:',open_door+1)
+    print('No.of Doors Closed:',close_door)
+
+Create 2 variables for open and close the doors. Now i took "n" as no.of rooms. 
+Used while loop for iteration rooms.
+range(0,10,2) : This function give all the even numbers. the output like below.
+>>>list(range(0,10,2))
+Here,
+#  0 - start index
+#  10 - end index
+#  2 - step size
+
+Output:
+[0, 2, 4, 6, 8]
+if, else condition blocks are just simple, you can understand easily.
+Aadd another if-else condition out of the while loop because using the range function we iterate (j-1) iterations.
+If no.of rooms are even then we increase the close_door with 1 at last. and for odd no.of rooms, we add 1 to open_door.
+
+if n%2==0:   
+    print('No.of Doors opened:',open_door)
+    print('No.of Doors Closed:',close_door+1)
+else:
+    print('No.of Doors opened:',open_door+1)
+    print('No.of Doors Closed:',close_door)
+
+Guessing game in python
+Step -1
+We need import python random function that can help us to generate random numbers in python. 
+
+import random
+
+Step -2
+Greet your friend who is playing you game today.
+
+print("Hello..! What's Your Name: ")
+name = input("Enter Here: ")
+
+Step -3
+Generate a random number by using the python random function. this is our secret number which will guess by our friend in our guessing game in python. Here i am taking a range of 1 to 20. you can choose your own.
+
+secret_number = random.randint(1,20)
+
+Step – 4
+Going to create one for loop that can help us to restrict our friend guesses in minimal guesses. We give 5 chances to our friend to guess our number.
+
+for i in range(1,6):
+    print('Take a Guess:')
+    guess = int(input())
+
+    if guess > secret_number:
+        print('Sorry..! your guess is too high ' +name+'.')
+    elif guess < secret_number:
+        print('Sorry..! your guess is too low '+name+'.')
+    else:
+        break
+
+Step5
+Now finally, if our friend guesses our number then congratulate them else give them a new trial for free by our guessing game in python program.
+
+if guess == secret_number:
+    print('Good job, '+name+'! you guessed my number in '+str(i)+'guesses.')
+else:
+    print('Nope, you exceeded guess times. My number is '+str(secret_number)+'.')
+
+Example:
+import random
+print("Hello..! what's your name..?")
+name = input()
+print('well,'+name+ ' I am thinking of a number between range of 1 to 20..')
+secret_number = random.randint(1,20)
+for i in range(1,6):
+    print('Take a Guess:')
+    guess = int(input())
+    if guess > secret_number:
+        print('Sorry..! your guess is too high ' +name+'.')
+    elif guess < secret_number:
+        print('Sorry..! your guess is too low '+name+'.')
+    else:
+        break
+if guess == secret_number:
+    print('Good job, '+name+'! you guessed my number in '+str(i)+'guesses.')
+else:
+    print('Nope, you exceeded guess times. My number is '+str(secret_number)+'.')

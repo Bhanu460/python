@@ -1,0 +1,209 @@
+WORKING WITH PYTHON LIST DATA STRUCTURE
+A list is a container which holds comma-separated values (items or elements) between square brackets[ ] where items or elements need not all have the same type. It can have any number of items and they may be of different types (integer, float, string etc.).
+
+List has the following five characteristics:
+1. MUTABLE
+2. Linear Data Structure
+3. Mixed Type Elements
+4. Variable Length
+5. Zero Based Indexing
+
+NOTE: Traditional arrays can not be created in Python.
+
+Types of lists :
+Empty List:  A list without any element is called an empty list
+
+Example:
+PyList = [] 
+print(PyList)#[]
+
+Number List:
+1 Integers List:  
+A list with only numbers  is called an integer list
+
+Example:
+PyList=[1,2,3,4,5]
+print(type(PyList))#<class 'list'>
+print(PyList)#[1,2,3,4,5]
+
+Float List:
+A list with only decimal numbers  is called float list
+
+Example:
+PyList=[1.1,2.88,3.33,4.1,5.0]
+print(type(PyList))#<class 'list'>
+print(PyList)#[1.1,2.88,3.33,4.1,5.0]
+
+String List:
+A list with only Strings & Chars  is called a string list
+
+Example:
+PyList = ["Sara", "David", "Raju", "Sandy"]
+print(PyList)#['Sara', 'David', 'Raju', 'Sandy']
+print(type(PyList))#<class 'list'>
+
+Mixed List: 
+A list with different datatypes is called Mixed list.
+
+Example:
+PyList=["Sara", 1, 2.03,'A'] 
+print(type(PyList))#<class 'list'>
+print(PyList)#['Sara', 1, 2.03,'A'] 
+
+Nested List: 
+A list with in another list is called Nested List.
+
+Example:
+PyList=["Mouse", [8, 4, 6], ['a']] 
+print(PyList)#['Mouse', [8, 4, 6], ['a']] 
+print(type(PyList))#<class 'list'>
+
+Example:Dynamic List
+PyList=eval(input("Enter List: "))
+print(type(PyList))#<class 'list'>
+print(PyList)
+
+Basic List Operations
+We can perform the following basic operations on list data structure.
+1.Concatenation
+2. Repetition
+3. Membership
+4. Iteration
+5. Length
+
+Len Example:(Length)  
+PyDataSet=[1,2,4,4]
+print(len(PyDataSet))#4
+
+Example2: Concatenation
+PyDataSet1=[1,2,4,4]
+PyDataSet2=['a','b','c','d']
+PyDataSet3=PyDataSet1+PyDataSet2
+print(PyDataSet3)#[1,2,4,4,'a','b','c','d']
+
+Example: Repetition
+PyDataSet=[1,2]
+print(PyDataSet*4)#[1,2,1,2,1,2,1,2]
+
+Example : Membership
+PyDataSet=[1,2,3]
+print(1 in PyDataSet)#True
+
+Example: Iteration
+PyList=['Raju','Smith','Sara','Scott']
+for friend in PyList:
+    print("Say Hey : ",friend)
+
+How to Access elements from a list?
+There are various ways in which we can access the elements of a list.
+
+List Index
+We can use the index operator [] to access an item in a list. Index starts from 0. So, a list having 5 elements will have index from 0 to 4. The index must be an integer. Nested list are accessed using nested indexing.
+
+NOTE:
+We can't use float or other types, this will result into TypeError. 
+
+Example:
+PyList=["Big Data", "Hadoop", "Spark", "IoT"]
+Item	         Big Data	Hadoop	Spark	IoT
+Index (from left)	 0	 1	 2	 3
+Index (from right)	-4	-3	-2	-1
+
+Example:
+PyList = ['P','Y','T','H','O','N']
+print(PyList[0])
+print(PyList[4])
+print(PyList[-1])
+print(PyList[-4])
+
+Negative indexing
+Python allows negative indexing for its sequences. The index of -1 refers to the last item, -2 to the second last item and so on.
+
+Example:
+PyList=["Big Data", "Hadoop", "Spark", "IoT"]
+print(PyList[0])
+print(PyList[0],PyList[3]) 
+print(PyList[-1]) 
+print(PyList[4]) 
+
+Example:
+MyList=["PYTHON",1,2,3,["Machine"]]
+print(MyList)
+print(MyList[1])
+print(MyList[-2])
+print(MyList[-1][-1][-1])
+print(MyList[-1][-1][-3])
+print(MyList[-2])
+print(MyList[-5][-1])
+
+List Slices
+Lists can be sliced like strings and other sequences. We can access a range of items in a list by using the slicing operator (colon).
+
+Syntax :
+sliced_list = List_Name[StartIndex:EndIndex]
+
+Example:
+PyList=["Big Data", "Hadoop", "Spark", "IoT"] 
+print(PyList[0:2])   
+print(PyList[1:2]) 
+print(PyList[1:-2])  
+print(PyList[:3]) 
+print(PyList[:]) 
+
+How to use start,stop,step:
+Example:
+PyList=["Big Data", "Hadoop", "Spark", "IoT"] 
+#Start:Stop
+print(PyList[1:3])
+#Start:Stop:Step(Increment)
+print(PyList[1:3:1])
+#Start:Stop:Step(Increment)
+print(PyList[1:4:2])#ALternate, Hadoop, IoT
+#Start:Stop:Step(Increment)
+print(PyList[1:4:3])#TwoElements, Hadoop
+#Start:Stop:Step(decrement)
+print(PyList[3:1:-1])#IoT, SPARK
+#Start:Stop:Step(decrement)
+print(PyList[3:1:-2])#IoT
+
+Example:
+listx=[1, 5, 7, 3, 2, 4, 6]  
+print(listx)  
+sublist=listx[2:7:2] 
+print(sublist)  
+sublist=listx[6:2:-1]   
+print(sublist)  
+
+Example:
+listx=[1, 5, 7, 3, 2, 4, 6, 10, 11]  
+print(listx[7:1:-3])
+print(listx[2:7:2])
+print(listx[2:7])
+print(listx[:4])
+print(listx[3:])
+
+Double Slice Operator:
+PyList=[1,2,3,4,5,6,7,8,9,10]
+print(PyList)
+print(PyList[::1])
+print(PyList[::2])
+print(PyList[::3])
+print(PyList[::4])
+print(PyList[::-1])
+print(PyList[::-2])
+print(PyList[::-3])
+print(PyList[::-4])
+
+Example:
+PyStr="Malayalam"
+if PyStr==PyStr[::-1]:
+    print("Yes,This is Palindrome")
+else:
+    print("NO, This is not Palindrome")
+
+Example:
+PyStr="malayalam"
+if PyStr==PyStr[::-1]:
+    print("Yes,This is Palindrome")
+else:
+    print("NO, This is not Palindrome") 

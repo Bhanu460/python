@@ -1,0 +1,32 @@
+AdvPYTHONCoding
+Functions
+Python Modules
+Packages
+Date
+Time
+Datetime
+Calendar
+Python Errors
+Python Exceptions
+Python Files
+OS Module
+CSV Files
+Regular Expression
+OOPs
+Multithreading
+XML
+JSON
+PDBC
+Django& FLask Intro
+TURTLE
+TKINTER Module
+Decorators
+Interators
+Generators
+Closures
+NumPy Intro
+SciPy Intro
+Pandas Intro
+LiveProjectExeProces
+resume
+FAQS,MOCKS, Py Certification

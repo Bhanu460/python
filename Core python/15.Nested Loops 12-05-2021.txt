@@ -1,0 +1,122 @@
+Python nested loops
+Python programming language allows to use one loop inside another loop.
+
+Syntax
+for [first iterating variable] in [outer loop]: # Outer loop
+    [do something]  # Optional
+    for [second iterating variable] in [nested loop]:   # Nested loop
+        [do something]  
+
+In nested loops find the following facts:
+1. X-axis always contains Y-axis
+2. Y-axis contains actual data
+3. A row contains n number of columns
+4. A column contains n number characters
+5. Outer loop represents X-axis (Rows)
+6. Inner loop represents Y-axis (Columns)
+7. Mathematically we are representing width, height (x,y)
+
+Example:
+for a in range(1,3):
+       for b in range(1,3):
+           print(a,b)
+
+Example:
+for x in range(1, 4):
+    for y in range(1, 4):
+        print('%d * %d = %d' % (x, y, x*y))
+
+Example:
+pattern=int(input("Enter Number of Rows: "))
+for i in range(1, pattern+1): 
+    for j in range(1,i+1): 
+        print("*",end=" ")
+    print()
+
+Example: Reverse Pattern
+pattern=int(input("Enter Number of rows: "))
+for i in range(pattern,0,-1):
+    for j in range(0,i):
+        print("*",end="")
+    print()
+
+Example:Reverse Pattern
+pattern=int(input("Enter Number of rows: "))
+for i in range(1,pattern+1):
+    for j in range(1,pattern+2-i):
+        print("*",end="")
+    print()
+
+Example:(Printing Stars in Pyramid Shape)
+pattern=int(input("Enter Number of rows: "))
+for i in range(0,pattern):
+    for j in range(0,pattern-i-1):
+        print(end=" ")
+    for j in range(0,i+1):
+        print("*",end=" ")
+    print()
+
+Example:(Printing Stars in Reverse Pyramid Shape)
+pattern=int(input("Enter Number of rows: "))
+for i in range(pattern,0,-1):
+    for j in range(0,pattern-i):
+        print(end=" ")
+    for j in range(0,i):
+        print("*",end=" ")
+    print()
+
+PYTHON PASS KEYWORD
+It is used when a statement is required syntactically but you do not want any command or code to execute.
+
+Why Pass?
+It is an empty statement
+It is null statement
+It results into no operation (NOP)
+
+Syntax
+pass
+
+Example:
+for letter in 'Python': 
+   if letter == 'h':
+      pass
+      print( 'This is pass block')
+   print( 'Current Letter :', letter)
+
+Example:
+x=1
+while(x<=3):
+  if(x==1):
+    print("1. PYTHON is SCRIPTING");
+  elif(x==2):
+      pass
+  else:
+   print("3. It is Fun to learn");
+  x+=1
+
+Armstrong number:
+Number of n digits which are equal to sum of nth power of its digits.
+
+Example: 5
+n(Number of Digits)=1
+5 power of 1 =5 ==> It is a armstrong number
+
+Example:7
+n(Number of Digits)=1
+7 power of 1 =7 ==> It is a armstrong number
+
+Armstrong numbers are : 0 1 2 3 4 5 6 7 8 9
+
+Example:22
+n(Number of Digits)=2
+2 power of 2 =4
+2 power of 2 =4
+4+4=8
+22!=8  ==> It is not a armstrong number
+
+Example: 153
+n(Number of Digits)=3
+1 power of 3 =1
+5 power of 3 =125
+3 power of 3 =27
+1+125+27=153 ==> It is a armstrong number

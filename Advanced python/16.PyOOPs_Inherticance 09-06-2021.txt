@@ -1,0 +1,288 @@
+Hierarchical Inheritance:-
+The concept of inheriting properties from one class into multiple classes is known as a hierarchical inheritance
+
+Syntax:
+class A:
+  pass
+class B(A):
+  pass
+class C(A):
+  pass
+
+Example:
+class Details():
+    def __init__(self):
+        self.Id=""
+        self.Name=""
+    def SetData(self,Id,Name):
+        self.Id=Id
+        self.Name=Name
+    def ShowData(self):
+        print("ID: ",self.Id)
+        print("Name: ",self.Name)
+
+class Employee(Details):
+    def __init__(self):
+        self.Company=""
+        self.Dept=""
+    def SetEmployee(self,Id,Name,Comp,Dept):
+        self.SetData(Id,Name)
+        self.Company=Comp
+        self.Dept=Dept
+    def ShowEmployee(self):
+        self.ShowData()
+        print("Company: ",self.Company)
+        print("Department: ",self.Dept)
+
+class Doctor(Details):
+    def __init__(self):
+        self.Hospital=""
+        self.Dept=""
+    def SetEmployee(self,Id,Name,Hos,Dept):
+        self.SetData(Id,Name)
+        self.Hospital=Hos
+        self.Dept=Dept
+    def ShowEmployee(self):
+        self.ShowData()
+        print("Hospital: ",self.Hospital)
+        print("Department: ",self.Dept)
+
+print("Employee Class Object")
+EE=Employee()
+EE.SetEmployee(101,"Raju","TCS","IT")
+EE.ShowEmployee()
+
+print("\n Doctor Class Object: ")
+DD=Doctor()
+DD.SetEmployee(101,'RaviKumar',"Prime","Dental")
+DD.ShowEmployee()
+
+Example:
+class Banker():
+    def Bank_Services(self):
+        print("Welcome to Banking Services")
+class EBanking(Banker):
+    def Email(self):
+        print("Welcome to Email Banking")
+class Banking_Mobile(Banker):
+    def Mobile(self):
+        print("Welcome to Mobile Banking")
+class Banking_Phone(Banker):
+    def Phone(self):
+        print("Welcome to Phone Banking")
+BP=Banking_Phone()
+BP.Bank_Services()
+BP.Phone()
+BM=Banking_Mobile()
+BM.Bank_Services()
+BM.Mobile()
+BE=EBanking()
+BE.Bank_Services()
+BE.Email()
+
+Example:
+class Hello():
+  def MyOne(self):
+      print("I am in Hello Class")
+class Hei(Hello):
+  def MyTwo(self):
+    print("I am in Hei Class")
+class Bye(Hello):
+  def MyThree(self):
+    print("I a, in Bye Class")
+
+HH=Hei()
+HH.MyOne()
+HH.MyTwo()
+BB=Bye()
+BB.MyOne()
+BB.MyThree()
+
+Example:
+class Animal():
+  def __init__(self,name):
+    self.name=name
+  def talk(self):
+    pass
+  
+class Cat(Animal):
+  def talk(self):
+    print("Cat is MewMewMewMewMewMew..!!")
+
+class Dog(Animal):
+  def talk(self):
+    print("Dog is Barkingngngngngngngng..!!")
+
+a=Animal('Sound')
+c=Cat("KITTY")
+c.talk()
+
+d=Dog("TOMMY")
+d.talk()
+
+LIVE USE CASE
+Library ==> Students ==> Faculty ==> Management ==>SrCitizen
+
+Hybrid Inheritance
+It is combining  two or more types of inheritance(s).
+OR
+It is the combination of Hirarchical+Multiple+Multilevel Inheritance(s) are called Hybrid Inheritance.
+
+
+PIC: HybridInheritance
+
+Syntax:
+class A:
+  pass
+class B(A):
+  pass
+class C(A):
+  pass
+class D(B, C):
+  pass
+
+def main():
+  obj1=D()
+
+if __name__=="__main__":
+  main()
+
+Example:
+class A:
+  def m(self):
+    print("method from Class A....")
+
+class B(A):
+  def m(self):
+    print("method from Class B....")
+
+class C(A):
+  def m(self):
+    print("method from Class C....")
+
+class D(B, C):
+  def m(self):
+    print("method from Class D....")
+    B.m(self)
+    C.m(self)
+    A.m(self)
+
+def main():
+  obj1=D()
+  obj1.m()
+  
+if __name__=="__main__":
+  main()
+
+Example: (Diamond Death Problem)
+class A:
+  def m(self):
+    print("method from Class A....")
+
+class B(A):
+  def m(self):
+    print("method from Class B....")
+    A.m(self)
+
+class C(A):
+  def m(self):
+    print("method from Class C....")
+    A.m(self)
+
+class D(B, C):
+  def m(self):
+    print("method from Class D....")
+    B.m(self)
+    C.m(self)
+    A.m(self)
+
+def main():
+  obj1=D()
+  obj1.m()
+  
+if __name__=="__main__":
+  main()
+
+Python super() function:
+It always refer the immediate superclass.  It allows you to call methods of the superclass in your subclass. It  can refer the superclass implicitly. It eliminates the need to declare certain characteristics of a class.
+
+In Python, super() built-in has two major use cases:
+1 Allows us to avoid using base class explicitly
+2 Working with Multiple Inheritance
+
+Syntax:PY-3.x
+super().methoName(args)
+
+Example: (with super())
+class A:
+  def m(self):
+    print("method from Class A....")
+
+class B(A):
+  def m(self):
+    print("method from Class B....")
+    super().m()
+
+class C(A):
+  def m(self):
+    print("method from Class C....")
+    super().m()
+
+class D(B, C):
+  def m(self):
+    print("method from Class D....")
+    super().m()
+    
+def main():
+  obj1=D()
+  obj1.m()
+  
+if __name__=="__main__":
+  main()
+
+
+ if __name__ =='__main__':
+
+__name__ (A Special variable) in Python
+ __name__ is one such special variable. If the source file is executed as the main program, the interpreter sets the __name__ variable to have a value “__main__”. If this file is being imported from another module, __name__ will be set to the module’s name.
+
+__name__ is a built-in variable which evaluates to the name of the current module. Thus it can be used to check whether the current script is being run on its own or being imported somewhere else by combining it with if statement.
+
+>>>__name__
+'__main__'
+
+Example:
+def Mul(a,b):
+  return a*b
+print(Mul(2,3))
+print(__name__)
+
+Example:
+import multiply
+print(multiply.Mul(2.3,1.1))
+print(__name__)
+
+Example:
+def Mul(a,b):
+  return a*b
+if __name__=="__main__":
+  print(Mul(2,3))
+  print(__name__)
+
+Consider two separate files File1 and File2.
+# File1.py
+print("File1 __name__ = %s" %__name__)
+if __name__ == "__main__":
+    print("File1 is being run directly")
+else:
+    print("File1 is being imported")
+ 
+# File2.py
+import File1
+print("File2 __name__ = %s" %__name__)
+if __name__ == "__main__":
+    print("File2 is being run directly")
+else:
+    print("File2 is being imported")
+
+Above, when File1.py is run directly, the interpreter sets the __name__ variable as __main__ and when it is run through File2.py by importing, the __name__ variable is set as the name of the python script, i.e. File1. Thus, it can be said that if __name__ == “__main__” is the part of the program that runs when the script is run from the command line using a command like python File1.py.

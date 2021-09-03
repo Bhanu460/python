@@ -1,0 +1,198 @@
+A &= B or A.intersection_update(B) 
+The intersection of two or more sets is the set of elements which are common to all sets.
+
+Sytnax:
+A.intersection_update(*Other_sets)
+
+Example:
+A = {1, 2, 3, 4}
+B = {2, 3, 4, 5}
+A.intersection_update(B)
+print(A)
+print(B)
+
+Union of sets (OR)
+A | B or  A.union(B) 	Returns a set which is the union of sets A and B. 
+
+Syntax:
+set1.union(set2)
+
+Example:
+PySetx=set(["Big Data", "Data Science"])  
+PySety=set(["Data Science", "Spark"])  
+PySeta = PySetx |PySety  #Union
+print (PySeta)  
+
+Set difference() In set1  but not set2
+
+Syntax
+A.difference(B)
+
+Example:
+A = {1, 2, 3, 4}
+B = {2, 3, 9}
+print(A.difference(B))
+print(B.difference(A))
+
+Example:
+A = {'a', 'b', 'c', 'd'}
+B = {'c', 'f', 'g'}
+print(A.difference(B))# Equivalent to A-B
+print(B.difference(A))# Equivalent to B-A
+
+A -= B or A.difference_update(B) 
+Removes all elements of B from the set A. 
+
+Syntax:
+A.difference_update(B)
+
+Example:
+A = {'a', 'c', 'g', 'd'}
+B = {'c', 'f', 'g'}
+A.difference_update(B)
+print(A)
+
+Set symmetric_difference() (XOR)
+It returns a new set which is the symmetric difference of two sets. The symmetric difference of two sets A and B is the set of elements which are in either of the sets A or B but not in both. (A-B)UNION(B-A)
+
+Syntax:
+A.symmetric_difference(B) 
+
+Example:
+A = {'a', 'b', 'c', 'd'}
+B = {'c', 'd', 'e' }
+print(A.symmetric_difference(B))
+print(B.symmetric_difference(A))
+
+Example:
+PySetx=set(["Big Data", "Data Science"])  
+PySety=set(["Data Science", "Spark"])  
+PySetc=PySetx.symmetric_difference(PySety)
+print(PySetc)
+PySetd=PySetx^PySety
+print(PySetd)
+
+A ^= B or  A.symmetric_difference_update(B) 
+Writes in A the symmetric difference of sets A and B. 
+
+Syntax:
+A.symmetric_difference_update(B)
+
+Example:
+A = {'a', 'c', 'd'}
+B = {'c', 'd', 'e' }
+A.symmetric_difference_update(B)
+print(A)
+
+Set issuperset(): set1 contains set2
+
+Syntax:
+A.issuperset(B) or A >= B 
+
+Example:
+A = {1, 2, 3, 4, 5}
+B = {1, 2, 3}
+C = {1, 2, 3}
+print(A.issuperset(B)) 
+print(B.issuperset(A)) 
+print(C.issuperset(B)) 
+
+Set issubset() set2 contains set1
+
+Syntax:
+A.issubset(B) or A <= B 
+
+Example:
+A = {1, 2, 3, 4, 5}
+B = {1, 2, 3}
+C = {1, 2, 3}
+print(A.issubset(B))
+print(B.issubset(A))
+print(C.issubset(B))
+
+isdisjoint()
+It returns True, if two sets have a null intersection.
+
+Syntax:
+set_a.isdisjoint(set_b)
+
+Example:
+A = {1, 2, 3, 4}
+B = {5, 6, 7}
+C = {4, 5, 6}
+print(A.isdisjoint(B))
+print(A.isdisjoint(C))
+
+Set copy(): It returns a shallow copy of the set.
+
+Syntax:
+set.copy()
+
+Example:
+PySetx = set(["Big Data", "Data Science"])  
+PySetd = PySetx.copy()  
+print(PySetd)  
+
+Special Operators with set (Membership operators)
+x={"a","b","c","d","e"}
+print("a" in x)
+print("d" in x)
+
+Iterations with for loop:
+x={"a","b","c","d","e"}
+for i in x:
+    print(i)
+
+Built-in Functions with Set
+all()	any()		enumerate()	len()		
+max()	min()		sorted()		
+
+Example:
+PySet={4,5,8,2.2}
+print(PySet)#{8, 2.2, 4, 5}
+print(sorted(PySet))#[2.2, 4, 5, 8]
+
+Python Frozenset
+It is a new class that has the characteristics of a set, but its elements cannot be changed once assigned. While tuples are immutable lists, frozensets are immutable sets. Frozensets can be created using the function frozenset().
+
+Syntax:
+PyFSet=frozenset(iterable)
+
+Example:
+PyFSet1=frozenset([1,2,3,4,5])
+print(type(PyFSet1))
+print(PyFSet1)
+PyFSet2=frozenset({2,3,4,5,6})
+print(type(PyFSet2))
+print(PyFSet2)
+print(PyFSet1.copy())
+print(PyFSet2.copy())
+print(PyFSet1.difference(PyFSet2))
+print(PyFSet1.intersection(PyFSet2))
+print(PyFSet1.isdisjoint(PyFSet2))
+print(PyFSet1.issubset(PyFSet2))
+print(PyFSet1.issuperset(PyFSet2))
+print(PyFSet2.symmetric_difference(PyFSet1))
+print(PyFSet2.union(PyFSet1))
+
+frozensets have less methods than sets.
+There are some operators similar to sets intersection(), union(), symmetric_difference(), difference(), issubset(), isdisjoint(), issuperset()) and a copy() method.
+
+Example:
+a = frozenset([1, 2, 3])
+b = frozenset([2, 3, 4])
+print(a.union(b))
+print(a & b)
+print(a.intersection(b))
+print(a.symmetric_difference(b))
+print(a.issubset(b))
+print(a.issuperset(b))
+
+Set Comprehension: Set comprehension is possible.
+Example:
+PySet={x*x for x in range(5)}
+print (PySet)
+PySet={2**x for x in range(2,10,2)}
+print (PySet)
+
+NOTE: Set Objects won't support indexing and slicing:

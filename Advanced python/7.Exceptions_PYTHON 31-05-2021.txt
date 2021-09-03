@@ -1,0 +1,555 @@
+Python Errors:
+In python there are three types of errors
+1. Syntax Errors
+2. Logical Errors or Semantic Errors
+3. RunTime Errors
+
+1 Syntax Errors
+These are the most basic type of errors. Syntax errors are almost always fatal. In IDLE, it will highlight where the syntax error is. Most syntax errors are typos, incorrect indentation/incorrect arguments.
+
+Example:
+print(Hello, World!)
+print("Hello')
+print('Hello")
+class="Naresh i Technologies"
+Name="KSRaju
+
+Here are some ways to avoid the most common Syntax Errors:
+1 Never use a Python  keyword  for a variable name
+2 Any strings in the code should have matching quotation marks
+3 Always check unclosed opening operators - (,{.(
+4 Always check the indentation
+5 Don't give your module the same name as one of the standard Python modules.
+
+2 Logical Errors:
+Your program might run without crashing (no syntax or run-time errors), but still do the wrong thing. 
+
+Example:
+x = 3; y = 4
+avg = x + y / 2
+print(avg)
+
+but the program prints 5.0 instead! 
+x+ y / 2, this has the same mathematical meaning as x + (y / 2) = 3 + (4 / 2) = 3 + 2 = 5. To fix the problem, average = (x + y) / 2, which makes clear. Logic errors can be difficult to spot, especially in a longer program, but as you get better at writing code you will also get better at avoiding logic errors.
+
+3. RunTime Errors:
+Python is able to understand what the program says, but runs into problems when actually performing the instructions. Like spelling mistakes or invalid Methods & Properties etc...!!
+
+Example:
+x=500
+printf(x)
+
+CallMe="KSRaju"
+print(callme)
+
+Common RunTime Errors in PYTHON:
+In PYTHON The following are common RunTimeErrors:
+1 NameError			2 TypeError
+3 KeyError			4 AttributeError
+5 IndexError
+
+Abnormal termination:
+The concept of terminating the program or script in the middle of its execution without executing last statement(s) of the program is known as abnormal termination.
+
+Example:
+a=input("Enter any Number")
+b=input("Enter any Number")
+c=a/b
+print("The Value is: " ,c)
+
+NOTE:
+TypeError: unsupported operand type(s) for /: 'str' and 'str'
+
+NOTE:
+Abnormal termiation is the undesirable situation in any Programming language.
+
+Types of Exceptions:
+In Python there are 2 types of exceptions are possible.
+1.Predefined Exceptions	2.User Definded Exceptions
+
+Predefined Exceptions: Also known as in-built exceptions
+Python Exception Handling
+Python provides two important features to handle any unexpected error in your Python programs:
+1 Exception Handling		2 Assertions
+
+What is an Exception?
+An exception is an error that happens during execution of a program. When that error occurs, Python generate an exception that can be handled, which avoids your program to crash.
+
+Common  Exception  Errors
+1 except IOError:
+    print('An error occurred trying to read the file.')
+
+2 except ValueError:
+    print('Non-numeric data found in the file.')
+
+3 except ImportError:
+    print("NO module found")
+
+4 except EOFError:
+    print('End Of File No Data')
+
+5 except KeyboardInterrupt:
+    print('You cancelled the operation.')
+
+6 except:
+    print('An error occurred.')
+
+Example:
+number=int(input("Enter Any Number: "))
+print("You Are Entered: ", number)
+
+Note: 
+The above script get executed perfectly as long as the user enters a number, If not It terminates, then we should develop exception logic.
+
+Syntax:
+try:
+    Some Statements Here
+except:
+    Exception Handling
+
+Example:
+try:
+  x=int(input("Enter a value: "))
+  print("Try Block:Enter Number is: ",x)
+except ValueError:
+  print("ExceptBlock:Invalid Input Enter Only Numbers");
+
+Example:
+try:
+    a=int(input("Enter any Number: "))
+    b=int(input("Enter any Number: "))
+    c=a/b
+    print("The Value is: " ,c)
+except ValueError:
+    print("SooryInvalidInput")
+
+Example:
+try:
+    a=int(input("Enter any Number: "))
+    b=int(input("Enter any Number: "))
+    c=a/b
+    print("The Value is: " ,c)
+except ValueError:
+    print("SooryInvalidInput")
+except ZeroDivisionError:
+    print("b must be valid Number")
+
+Example:
+try:
+  x=int(input("Enter Required Number: "))
+  y=int(input("Enter Required Number: "))
+  print("The Result is: ",x/y)
+except Exception as arg:
+    print("You can't divide by zero.")
+    print('Error: ', arg)
+
+try with multiple except blocks:
+Example:
+try:
+    p=int(input("Enter Any Number: "))
+    q=int(input("Enter Any Number: "))
+    r=p/q
+    print("The Value is: ",int(r))
+    print("TryBlockIsExecuted:")
+except ValueError:
+    print("ExceptBlock")
+    print("Sorry User Numbers Only Valid")
+except Exception as arg:
+    print("You can't divide by zero.")
+    print('Error: ', arg)
+
+Syntax-II
+try:
+   You do your operations here;
+   ......................
+except Exception-I:
+   If there is ExceptionI, then execute this block.
+   ......................
+else:
+   If there is no exception then execute this block. 
+
+Example:
+try:
+    fi=open("Hai1.txt",'r')
+    print(fi.read(6))
+except IOError:
+    print("File Not Existed Please Create")
+else:
+    print("ContentReadSuccessfully")
+    fi.close()
+
+NOTE: If file Not Existed It returns except IOError
+
+Example:
+try:
+    x=int(input("Enter Any Input: "))
+    y=int(input("Enter Any Input: "))
+    z=x/y
+    print(z)
+except ValueError:
+    print("SorryAlphabetsUnableToCompute")
+    print("Special Chars Also Not Accepted")
+except Exception as arg:
+    print("Error: ",arg)
+else:
+    print("Welcome to Else Block")
+    print("Else Block Successfully Executed")
+    print("Welcome to More Computations")
+    print(x+y)
+    print(x-y)
+    print(x*y)
+
+Default except block:
+The except Clause with No Exceptions:
+You can also use the except statement with no exceptions:
+
+Syntax-III
+try:
+   You do your operations here;
+   ............................................
+   ............................................
+except:
+   If there is any exception, then execute this block.
+   ............................................
+   ............................................
+else:
+   If there is no exception then execute this block. 
+
+Example:
+try:
+  x=int(input("Enter Required Number: "))
+  y=int(input("Enter Required Number: "))
+  print("The Result is: ",int(x/y))
+except:
+    print("Arithmetic Exception Raised.")
+else:
+    print("SuccessfullyDone")
+
+Syntax:-IV
+The try-finally Clause
+You can use a finally: block along with a try: block. The finally block is a place to put any code that must execute, whether the try-block raised an exception or not.
+
+try:
+   You do your operations here;
+  ............................................
+except:
+Exceptional Statements
+  ............................................
+finally:
+   This would always be executed.
+  ............................................
+
+NOTE: You cannot use else clause, along with a finally clause.
+
+Example:
+try:
+    print("try block")
+except:
+    print("except block")
+finally:
+    print("finally block")
+
+Example:
+try:
+   fi = open("MyFile.txt",mode='r', encoding = 'utf-8')
+   print(fi.read(4))
+finally:
+   fi.close()
+   print("This Block Always get Executed")
+
+RealTime Coding Challenges
+try:
+  num = int(input("Input binary value: "), 2)
+  print("num (decimal format):", num)
+  print("num (binary format):", bin(num))  
+except ValueError:
+  print("Please input only binary value...")
+
+Example:
+try:
+  num = int(input("Input hexadecimal value: "), 16)
+  print("num (decimal format):", num)
+  print("num (hexadecimal format):", hex(num))  
+except ValueError:
+  print("Please input only hexadecimal value...")
+
+Example:
+try:
+  num = int(input("Input octal value: "), 8)
+  print("num (decimal format):", num)
+  print("num (octal format):", oct(num))  
+except ValueError:
+  print("Please input only octal value...")
+
+Example:
+Program for limiting the user to input only integer value
+while True:
+  try:
+    num = int(input("Enter an integer number: "))
+    break
+  except ValueError:
+      print("Please input integer only...")  
+      continue
+print("num:", num)
+
+Example:Program for limiting the user to input valid Age.
+while True:
+  try:
+    age = int(input("Enter age: ")) 
+    if age>18 and age<51:
+      print("Age entered successfully...")
+      break;
+    else:
+      print("Age should be >18 and <51...")      
+  except ValueError:
+    print("Provide an integer value...")
+    continue
+
+Example:Program for limiting the user to input valid Gender.
+while True:
+  try:
+    gender = input("Enter gender: ")
+    if gender == "Male" or gender == "Female":
+      print("Gender entered successfully...")
+      break;
+    else:
+      print("Gender should be either Male or Female")   
+  except:
+    continue
+
+Example:
+#Input Age
+while True:
+  try:
+    age = int(input("Enter age: ")) 
+    if age>18 and age<51:
+      print("Age entered successfully...")
+      break;
+    else:
+      print("Age should be >18 and <51...")      
+  except ValueError:
+    print("Provide an integer value...")
+    continue
+
+#Input Gender
+while True:
+  try:
+    gender = input("Enter gender: ")
+    if gender == "Male" or gender == "Female":
+      print("Gender entered successfully...")
+      break;
+    else:
+      print("Gender should be either Male or Female")   
+  except:
+    continue
+# print age and gender
+print("Age is:", age)
+print("Gender is:", gender)
+
+RealTime Coding Challenges:
+Example:
+Reading Binary values and Display Decimal Value..!!
+def BinToDec(value):
+  try:
+    return int(value, 2)
+  except ValueError:
+    return "Invalid binary Value"
+
+# Reading Binary Values
+input1 = input("Enter Valid Binary: ")
+input2 = input("Enter Valid Binary: ")
+input3 = input("Enter Valid Binary: ")
+
+print(input1, "as decimal: ", BinToDec(input1))
+print(input2, "as decimal: ", BinToDec(input2))
+print(input3, "as decimal: ", BinToDec(input3))
+
+Example:
+Reading Octal values and Display Decimal Value..!!
+def OctToDec(value):
+  try:
+    return int(value, 8)
+  except ValueError:
+    return "Invalid Octal Value"
+
+# Reading Octal Values
+input1 = input("Enter Valid Octal Number: ")
+input2 = input("Enter Valid Octal Number: ")
+input3 = input("Enter Valid Octal Number: ")
+
+print(input1, "as decimal: ", OctToDec(input1))
+print(input2, "as decimal: ", OctToDec(input2))
+print(input3, "as decimal: ", OctToDec(input3))
+
+Reading hexa values and Display Decimal Value..!!
+def HexToDec(value):
+  try:
+    return int(value, 16)
+  except ValueError:
+    return "Invalid Hexadecimal Value"
+
+#Reading Values
+input1 = input("Enter Valid Hexa Value: ")
+input2 = input("Enter Valid Hexa Value: ")
+input3 = input("Enter Valid Hexa Value: ")
+
+#Display Hexa Values
+print(input1, "as decimal: ", HexToDec(input1))
+print(input2, "as decimal: ", HexToDec(input2))
+print(input3, "as decimal: ", HexToDec(input3))
+
+SyntaxV:
+Nested try-except-finally blocks:
+We can take try-except-finally blocks inside try or except or finally blocks.i.e nesting of try- except-finally is possible.
+
+Syntax: 
+try:
+----------
+----------
+     try:
+----------
+----------
+    except:
+  ----------
+  ----------
+   finally:
+  -----------
+except:
+  -----------
+  -----------
+finally:
+-------------
+-------------
+
+EXAMPLE:
+try:
+    print("OuterTryBlock")
+    try:
+        print("InnerTryBlock")
+    except ZeroDivisionError:
+        print("InnerExceptBlock")
+    finally:
+        print("InnerFinallyBlock")
+except:
+    print("OuterExceptBlock")
+finally:
+    print("OuterFinallyBlock")
+
+User Defined Exceptions:
+Some time we have to define and raise exceptions explicitly to indicate that something goes wrong ,such type of exceptions are called User Defined Exceptions or Customized Exceptions.
+
+raise (throw) keyword:
+We can raise an exception explicitly with the raise keyword. You can manually throw (raise) an exception in Python with the keyword raise.
+
+Syntax:
+raise [Exception [, args ]]
+
+Exception is the type of exception (for example, NameError) and argument is a value for the exception argument. The argument is optional; if not supplied, the exception argument is None.
+
+Example:
+>>> raise NameError("Raju")
+>>> raise ValueError("InvalidData")
+
+Example:
+x=int(input("Enter Any Number: "))
+if x<=10:
+    raise ValueError('x should not be less than 10!')
+else:
+    print("Great Value")
+
+Example:
+try:
+    x=int(input("Enter Any Number: "))
+    print(x)
+except:
+    raise ValueError("Invalid Input")
+
+Example:
+try:
+    a = int(input("Enter a negative integer: "))
+    if a >= 0:
+        raise ValueError("That is not a negative number!")
+except ValueError as ve:
+    print(ve)
+
+Assertions in Python(Automatic Error Detection)
+Assert is the PYTHON Keyword. Python's assert statement helps you find bugs more quickly and with less pain. When it encounters an assert statement, Python evaluates the accompanying expression, which is hopefully true. If the expression is false, Python raises an AssertionError exception.
+
+Syntax
+assert expression, argument
+
+expression
+Required. Expression to evaluate.
+
+argument
+Optional. Argument passed to the exception raise
+
+Asserts VS Try...Except:
+Software Errors are Two Categories:
+1. Recoverable Errors (try ... except) 
+==> User can take corrective action(Try Again or Choose Another Option)
+2. Un-Recoverable Errors(assert)
+==> Not Enough information to fix or no alternative action is possible
+
+Places to consider putting assertions:
+1 Checking parameter types, classes, or values
+2 Checking data structure invariants  (never changed)
+3 After calling a function, to make sure that its return is reasonable
+
+NOTE:
+Assertions are like airbags for your software. Always there, work automatically when you need them.
+
+Example:
+assert 2 + 2 == 4
+assert 2 + 2 == 3
+assert 2 + 2 == 3,"That can't be right."
+
+Example:
+def power(x,y):
+  assert x>0,"x Must be Positive Number not {0}"
+  assert y>0,"y Must be Positive Number not {0}"
+  return x**y
+print(power(1,-2))
+
+Example:
+def GetAge(age):
+    assert age>18,"Age Must not Be less than 18Years"
+    print("You are Allow to Access: ",age)
+GetAge(19)
+
+Ignore  Errors
+Errors  can be ignored  without  handling  them in the program. We can do this using 'pass' in except block of error handling section like below.
+
+Syntax:
+try:
+    data="Something_that_Can_go_wrong"
+except:
+    pass
+
+Example:
+try:
+    pass
+except:
+    pass
+finally:
+    pass
+
+Example:
+try:
+  x=int(input("Enter Required Number: "))
+  y=int(input("Enter Required Number: "))
+  print("The Result is: ",int(x/y))
+except:
+    pass
+    print("Error: Arithmetic Operation Ignored. Pass Block")
+else:
+    print("SuccessfullyDone")
+
+Example:
+try:
+    x=int(input("Enter Any: "))
+    print(x)
+except:
+    pass
+finally:
+    pass

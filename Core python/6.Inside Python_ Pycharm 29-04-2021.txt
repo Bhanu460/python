@@ -1,0 +1,101 @@
+INSIDE PYTHON
+After successful installation of Python, It is the combination of Interpreter and Support Library.
+
+Programmers View of Interpreter
+Interpreter is a software, which takes source code, reads it line by line and executes it line by line to produce the output.
+
+Inside INTERPRETER
+In Compiled languages are, compiler converts the source code into machine code or binary code, which is directly executed by the machine. In PYTHON compiler is using to convert the source code(.py) into byte code.(.pyc)
+
+What is Byte Code in PYTHON?
+Byte code is easily readable by PYTHON Virtual Machine and Source code easily understandable by programmers.
+1 Low Level
+2 Platform Independent
+3 Efficient
+4 Intermediate
+5 Representation of your source code
+
+PVM is read the byte code line by line and execute every line and produce output. In that process PVM uses all your Library Modules.
+
+What are PYC files?
+Python automatically compiles your script to compiled code, so called byte code, before running it. 
+__pycache__:
+It is a folder containing Python-3 byte-code compiled and ready to be executed.
+
+Example:
+import py_compile
+print(dir(py_compile))
+
+Example:
+import compileall
+print(dir(compileall))
+
+Example:
+import py_compile
+py_compile.compile("MyScript.py")
+
+Steps to Work with PYTHON INSIDE:
+1. Create a Folder/Directory on the Desktop ( or in AnyLocation)
+2. Create a py file in that folder
+3. Go to command prompt, change to current Folder/Dir location
+4. python and hit the return key
+5. import py_compile
+6.py_compile.compile("filename.py")
+7. __pycache__ folder created automatically with byte code
+8. cd __pycache__
+9. python file.cpython-38.pyc, to execute byte code directly without source code
+
+
+
+PYTHON RealTime IDEs
+Define IDE?
+Integrated Development Environment is a software application, that provides comprehensive facilities to computer programmers for software development. 
+
+What is PyCharm?
+It is the best IDE for realtime PYTHON projects. It provides code analysis, a graphical debugger, an integrated unit tester and supports web development with Django framework. 
+
+PyCharm Come in two editions:
+1 Community Edition (Fully-Free)
+2 Professional Edition (Commercial-$199)
+
+PyCharm IDE Installation:
+1 Go to https://www.jetbrains.com/pycharm/download
+OR
+2 https://www.jetbrains.com/pycharm/promo/anaconda/
+3 Install any Edition Community or Professional
+4 It is cross-platform and works on Windows, macOS, and Linux.
+
+PyCharm IDE Features List:
+1 Intelligent Coding Assistance
+2 Built-in Developer Tools
+3 Web Development
+4 Scientific Tools
+
+Components of Pycharm:
+It has maily the following Components:
+1. Menu or Dashboard
+2. Project Panel
+3. Code Editor
+4. Console or Output Window
+
+How to create a project:
+1. Goto file menu, click on New project, Enter name of the Project PYTHON_6AM
+2. Select Current window
+3. Right click on the project select Python file, enter name of the file.
+4. Enter required python source code as follows
+
+Example:
+print("Hello Welcome to PYCHARM")
+x=input("Enter any Number: ")
+print(x)
+import os
+print(os.getcwd())
+import sys
+print(sys.platform)
+print(sys.path)
+import platform
+print(platform.python_version())
+import  keyword
+print(keyword.kwlist)
+
+To run the code Ctrl+Shift+F10

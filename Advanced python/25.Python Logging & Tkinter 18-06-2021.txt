@@ -1,0 +1,476 @@
+PYTHON LOGGING:
+Logging is a means of tracking events that happen when some software runs. Logging is important for software developing, debugging and running.
+
+Example: Employee Log Book, System Log Files, Server Log File..!!
+
+The main advantages of logging are:
+1.We can use log files while performing debugging
+2.We can provide statistics like number of requests per day etc
+3.To implement logging, Python provides one inbuilt module logging.
+
+Levels of Log Message
+Debug : These are used to give Detailed information
+Info : These are used to Confirm that things are working as expected
+Warning : These are used an indication that something unexpected happened(default)
+Error : This tells that due to a more serious problem
+Critical : Indicating that the program itself may be unable to continue running
+
+Each built-in logging level has been assigned its numeric value.
+1 NOTSET ==> 0
+2 DEBUG ==> 10
+3 INFO ==> 20
+
+High Priority/Higher Level Messages
+4 WARNING ==> 30
+5 ERROR ==> 40
+6 CRITICAL ==> 50
+
+Example:
+import logging
+logging.basicConfig(filename='logging.txt',level=logging.CRITICAL)
+print("Hey Demo for Logging")
+logging.debug("This is Debug Message")
+logging.info("This is Info Message")
+logging.warning("This is Warning Message")
+logging.error("This is Error Message")
+logging.critical("This is Critical Message")
+print("LoggingFileCreatedSuccessfully")
+
+Example:
+import logging
+logging.basicConfig(filename='logging.txt',level=logging.ERROR)
+print("Hey Demo for Logging")
+logging.debug("This is Debug Message")
+logging.info("This is Info Message")
+logging.warning("This is Warning Message")
+logging.error("This is Error Message")
+logging.critical("This is Critical Message")
+print("LoggingFileCreatedSuccessfully")
+
+Configure Log File in different File Modes:
+The above scripts by default data will be append to the log file.
+
+Example: (Default Append)
+#Specify Explicitly Overwriting
+logging.basicConfig(filename='log.txt',level=logging.DEBUG,filemode='w')
+#Specify Explicitly
+logging.basicConfig(filename='log.txt',level=logging.INFO,filemode='a') 
+#Default Mode
+logging.basicConfig(filename='log.txt',level=logging.WARNING)
+
+NOTE:
+Default Level-Warning(30), Default File-Console, Default Mode-Append 
+
+Example:
+import logging
+logging.basicConfig(filename='logging.txt',level=logging.WARNING)
+print("Hey Demo for Logging")
+logging.debug("This is Debug Message")
+logging.info("This is Info Message")
+logging.warning("This is Warning Message")
+logging.error("This is Error Message")
+logging.critical("This is Critical Message")
+print("LoggingFileCreatedSuccessfully")
+
+Example:
+import logging
+logging.basicConfig(filename='logging.txt',level=logging.INFO)
+logging.info('Hei DevTeam New Log Tracked..!!')
+try:
+    x=int(input('Enter First Number:'))
+    y=int(input('Enter Second Number:'))
+    print('The Result:',x/y)
+except ZeroDivisionError as msg:
+    print('Error Divide With Zero')
+    logging.exception(msg)
+except ValueError as msg:
+    print('Integer Only')
+    logging.exception(msg)
+logging.info('Logging Finished Guys..!!')
+
+How to format log messages:
+Format keyword argument we can format messages
+1. To display only level logging.basicConfig(format='%(levelname)s')
+
+Example:
+import logging
+logging.basicConfig(filename='logging.txt',level=logging.DEBUG,format='%(asctime)s:%(levelname)s:%(message)s')
+logging.info('Hei Dev. Team,New Log Track..!!')
+try:
+    x=int(input('Enter First Number:'))
+    y=int(input('Enter Second Number:'))
+    print('The Result:',x/y)
+except ZeroDivisionError as msg:
+    print('Error Divide With Zero')
+    logging.exception(msg)
+except ValueError as msg:
+    print('Integer Only')
+    logging.exception(msg)
+logging.info('Logging Finished Guys..!!')
+
+Example:
+import logging
+logging.basicConfig(filename='logging.txt',level=logging.INFO,format='%(asctime)s:%(levelname)s:%(message)s', datefmt='%m/%d/%Y  %I:%M:%S  %p')
+logging.info('HeyDevTeamNew Log Track..!!')
+try:
+    x=int(input('Enter First Number:'))
+    y=int(input('Enter Second Number:'))
+    print('The Result:',x/y)
+except ZeroDivisionError as msg:
+    print('Error Divide With Zero')
+    logging.exception(msg)
+except ValueError as msg:
+    print('Integer Only')
+    logging.exception(msg)
+logging.info('Logging Finished..!!')
+
+Tkinter
+Introduction to GUI programming
+Tkinter(Tk interface) is the standard Python interface to the Tk-GUI toolkit. Tk & Tkinter are available on all platforms. Graphical User Interface allows a user to interact with a computer program using a  pointing device that manipulates small pictures on a computer screen. 
+
+GUI Programming in Python:
+There are many ways to develop GUI based programs in Python. Top 5 Python GUI Libraries:
+1.Tkinter
+2. PyQT5
+3. PySide
+4. Kivy
+5. wxPython
+
+Tkinter module:
+It is the default Graphical User Interface library for Python. Python once combined with Tkinter provides a quick and simple graphical program applications. The first graphical user interface toolkit is Tk, Tkinter stands for Tk interface.
+
+Tkinter in Python helps in creating GUI Applications with a minimized steps of coding. Tkinter is the only library that is built-in into Python's Standard Library. It is cross-platform, we can write same code on any platform like Windows, Unix, Linux, Mac etc. It is a lightweight, simple and efficient module.
+
+Tk, TCL & Tkinter
+Tool Command Language. Tk is very popular thus it has been ported to a variety of other scripting languages, including Perl, Ruby and Python. Tkinter provides us a faster and efficient way in order to build useful apps .
+
+Setup/Configure Tkinter
+Explicitly no need to install Tkinter. It is standard library in Python.
+
+Example:
+import tkinter as tk 
+abc = tk.Tk() #abc indicates name of the main window object
+abc.mainloop()# It is used to start the application
+
+Example:
+from tkinter import * #It import all of the funtions and varibales from tkinter package
+abc=Tk() #tk constructor method
+Label(abc,text="Hello PYTHON GUI").pack() #Geometry management method
+abc.mainloop()
+
+PYTHON Tkinter Components / Widgets:
+1 Button		2 Canvas		3 Checkbutton	
+4 Entry			5 Frame			6 Label		
+7 Listbox		8 Menubutton		9 Menu		
+10 Message		11 Radiobutton		12 Scale
+13 Scrollbar		14 Text			15 Spinbox    
+16 tkMessageBox
+
+Tkinter Button
+It is used to add buttons in a Python applications. These buttons are display different components like text or images that convey the purpose of the buttons.
+
+Syntax
+w = Button ( master, option=value, ... )
+
+Example:
+from tkinter import *   
+x = Tk()  
+x.geometry("250x150")  
+but = Button(x,text = "SampleButton")  
+but.pack()  
+x.mainloop()  
+
+Example:
+#click botten:
+from tkinter import *
+x=Tk()
+x.geometry('150x150')
+Chk1=IntVar()
+CkButton1=Checkbutton(x,text="Machine Learning")
+CkButton1.pack()
+
+Chk2=IntVar()
+CkButton2=Checkbutton(x,text="Dep Learning")
+CkButton2.pack()
+
+Chk3=IntVar()
+CkButton3=Checkbutton(x,text="Artificial Intelligence")
+CkButton3.pack()
+
+Chk4=IntVar()
+CkButton4=Checkbutton(x,text="BlockChainCrytoGraphy.")
+CkButton4.pack()
+
+x.mainloop()
+
+
+Example:
+import tkinter
+from tkinter import *
+from tkinter import messagebox
+x = Tk()
+x.geometry("350x200")
+def click():
+    messagebox.showinfo("Hey", "Clicked on Green Button")
+Btn1 = Button(x, text="YELLOW", pady=10)
+Btn2 = Button(x, text="BLUE", pady=10)
+# Adding click Event to the following Button
+Btn3 = Button(x, text="GREEN", command=click,pady=10)
+Btn1.pack(side = LEFT)
+Btn2.pack(side = RIGHT)
+Btn3.pack(side = TOP)
+x.mainloop()
+
+Example:
+from tkinter import *
+from tkinter import ttk
+root=Tk()
+button=ttk.Button(root,text="Click ME.!!")
+button.pack()
+def callback():
+	print("ClickME")
+button.config(command=callback)
+Ctrl+Z (Exit)
+button.invoke()
+button.state(['disabled'])
+button.instate(['disabled'])
+button.state(['!disabled'])
+lg=PhotoImage(file='E:\HTML_Tutorials\HTML5\Images\Butterfly.gif')
+button.config(image=lg,compound=LEFT)
+slogo=lg.subsample(3,3)
+button.config(image=slogo)
+
+Python Tkinter Radio-Button:
+This widget is used to implement one-of-many selection in the Python applications. It shows multiple choices to the user out of which, the user can select only one out of them. We can associate different methods with each of the radio-button.
+
+We can display the multiple line text or images on the radio-buttons. To keep track the user's selection the radio-button, it is associated with a single variable. Each button shows a single value for that particular variable.
+
+Syntax
+w = Radiobutton(top, options) 
+
+Example:
+from tkinter import * 
+from tkinter.ttk import *
+win = Tk() 
+win.geometry("250x250") 
+var = StringVar(win) 
+options = {" Option_1" : "A", 
+		"Option_2" : "B", 
+		"Option_3" : "C", 
+		"Option_4" : "D" 
+		} 
+for (txtt, vall) in options.items(): 
+	Radiobutton(win,text=txtt, variable=var, value=vall).pack(side=TOP, ipady = 5) 
+mainloop() 
+
+Python Tkinter Checkbutton
+The Check-Button is used to track the user's choices provided to the application. In other words, we can say that Check-Button is used to implement the on/off selections. It is a standard widget in Tkinter library..
+
+The Checkbutton can contain the text or images. The Checkbutton is mostly used to provide many choices to the user among which, the user needs to choose the one. It generally implements many of many selections.
+
+Syntax
+w = checkbutton(master, options)  
+
+Example:
+from tkinter import *   
+top = Tk()  
+top.geometry("100x100")  
+check1 = IntVar()  
+check2 = IntVar()  
+check3 = IntVar()  
+ckbtn1 = Checkbutton(top, text = "PYTHON", variable = check1)  
+ckbtn2 = Checkbutton(top, text = "CYTHON", variable = check2)  
+ckbtn3 = Checkbutton(top, text = "JYTHON", variable = check3)
+ckbtn1.pack()  
+ckbtn2.pack()  
+ckbtn3.pack()  
+top.mainloop()  
+
+ComboBox:
+It is another widget from tkinter to select a single item at a time from group of items. It is popularly known as drop down box. It is standard widget in Python Tkinter library.
+
+Syntax:
+w = Combobox(master, option=value, ...)
+
+Example:
+from tkinter import *
+from tkinter import ttk
+x = Tk()
+x.geometry("150x130")
+fframe = Frame(x)
+fframe.pack()
+vvlist = ["PYTHON", "Machine Learning", "Data Science","CYTHON", "Django"]
+Drop=ttk.Combobox(fframe, values = vvlist)
+Drop.set("Select Required Tech.")
+Drop.pack(padx = 5, pady = 5)
+x.mainloop()
+
+List Box:
+It is another tkinter widget, It is used to display a list of options for the user to select any number of items at a time. 
+Syntax:
+w = Listbox ( master, option, ... )
+
+Example:
+from tkinter import * 
+x = Tk()
+x.geometry("180x200")
+frame = Frame(x)
+frame.pack()
+label = Label(x,text = "Drop of Technologies.")  
+label.pack()  
+lbox = Listbox(x)  
+lbox.insert(1,"PYTHON")  
+lbox.insert(2, "CYTHON")  
+lbox.insert(3, "JYTHON")  
+lbox.insert(4, "IRONPYTHON")
+lbox.insert(5, "RUBYPYTHON")
+lbox.insert(6, "PYJAVASCRIPT")  
+lbox.pack()  
+x.mainloop()
+ 
+Python Tkinter Label
+This widget is used to provide the message to the user about other widgets used in the Python app. There are various options which can be specified to configure the text or the part of the text shown in the Label. It is standard widget in tkinter.
+
+Syntax
+w = Label (master, options)  
+
+Example:
+from tkinter import *  
+top = Tk()  
+top.geometry("350x200")  
+#Creating Label  
+UserName = Label(top, text = "UserName").place(x = 35,y = 55)  
+#Creating Label  
+Password = Label(top, text = "Password").place(x = 35, y = 85)  
+sbmitbtn = Button(top, text = "Login").place(x = 160, y = 130)  
+element1 = Entry(top,width = 30).place(x = 110, y = 60)  
+element2 = Entry(top, width = 30).place(x = 110, y = 100)  
+top.mainloop()  
+
+Python Tkinter Entry
+It is used to provide the single line text-box to the user to accept a value from the user. We can use the Entry widget to accept the strings from the end user. It can only be used for one line of text from the user.
+
+Syntax
+w = Entry (parent, options)  
+
+Example:
+from tkinter import *  
+top = Tk()  
+top.geometry("450x300")  
+name = Label(top, text = "Name").place(x = 60,y = 50)  
+email = Label(top, text = "eMail").place(x = 60, y = 90)  
+password = Label(top, text = "Password").place(x = 65, y = 130)  
+sbmitbtn = Button(top, text = "SUBMIT").place(x = 100, y = 180)  
+element1 = Entry(top).place(x = 105, y = 55)  
+element2 = Entry(top).place(x = 105, y = 95)  
+element3 = Entry(top).place(x = 120, y = 135)  
+top.mainloop()  
+
+Place Geometry Manager:
+It is the simplest of the three general geometry managers provided in Tkinter. It allows you explicitly set the position and size of a window, either in absolute terms, or relative to another window. You can access the place manager through the place method which is available for all standard widgets.
+
+Features:
+1. Provides exact control of widget location and size
+2. Describe location in absolute or relative terms
+
+Limitations:
+1. Difficult to manage a large number of widgets
+
+Example:
+from tkinter import *
+from tkinter import ttk
+root=Tk()
+root.geometry('640x480+200+200')
+ttk.Label(root,text="Yellow",background="yellow").place(x=100,y=50)
+ttk.Label(root,text="Blue",background="blue").place(relx=.5,rely=.5, anchor='center')
+ttk.Label(root,text="Green",background="green").place(relx=0.5,x=100,rely=0.5,y=50)
+root.mainloop()
+
+Example:
+from tkinter import *
+from tkinter import ttk
+root=Tk()
+root.geometry('640x480+200+200')
+ttk.Label(root,text="Yellow",background="yellow").place(x=100,y=50,width=100,height=50)
+ttk.Label(root,text="Blue",background="blue").place(relx=.5,rely=.5, anchor='center',relwidth=0.5,relheight=0.5)
+ttk.Label(root,text="Orange",background="orange").place(relx=1.0,x=-5,y=5,anchor='ne')
+root.mainloop()
+
+Python Tkinter Checkbutton
+The Checkbutton is used to track the user's choices provided to the application. In other words, we can say that Checkbutton is used to implement the on/off selections. 
+
+Syntax:
+w = checkbutton(master, options)  
+
+Example:
+from tkinter import *   
+x = Tk()  
+x.geometry("150x150")  
+checkvar1 = IntVar()  
+checkvar2 = IntVar()  
+checkvar3 = IntVar()  
+chkbtn1 = Checkbutton(x, text = "PYTHON")  
+chkbtn2 = Checkbutton(x, text = "CYTHON")  
+chkbtn3 = Checkbutton(x, text = "JYTHON")  
+chkbtn1.pack()  
+chkbtn2.pack()  
+chkbtn3.pack()  
+x.mainloop()  
+
+tkinter keyboard callback
+Events can come from various sources, including key presses and mouse operations by the user, and redraw events from the window manager. Tkinter provides a powerful mechanism to let you deal with events yourself. For each widget, you can bind Python functions and methods to events.
+
+Example:
+from tkinter import *
+from tkinter import ttk
+root=Tk()
+def key_press(event):
+    print('char: {}'.format(event.char))
+    print('Keycode: {}'.format(event.keycode))
+root.bind('<KeyPress>',key_press)
+root.mainloop()
+
+Python Tkinter Menu
+The Menu widget is used to create various types of menus (top level, pull down, and pop up) in the python application.
+
+Syntax
+w = Menu(top, options)   
+
+Example:
+from tkinter import *  
+top = Tk()  
+def hello():  
+    print("Hello Hei How Are U..!")  
+menubar = Menu(top)  
+menubar.add_command(label="Hello!", command=hello)  
+menubar.add_command(label="Quit!", command=top.quit)  
+top.config(menu=menubar)  
+top.mainloop() 
+
+Example:
+from tkinter import Toplevel, Button, Tk, Menu  
+top = Tk()  
+menubar = Menu(top)  
+file = Menu(menubar, tearoff=0)  
+file.add_command(label="New")  
+file.add_command(label="Open")  
+file.add_command(label="Save")  
+file.add_command(label="Save as...")  
+file.add_command(label="Close")  
+file.add_separator()  
+file.add_command(label="Exit", command=top.quit)  
+menubar.add_cascade(label="File", menu=file)  
+edit = Menu(menubar, tearoff=0)  
+edit.add_command(label="Undo")  
+edit.add_separator()  
+edit.add_command(label="Cut")  
+edit.add_command(label="Copy")  
+edit.add_command(label="Paste")  
+edit.add_command(label="Delete")  
+edit.add_command(label="Select All")  
+menubar.add_cascade(label="Edit", menu=edit)  
+help = Menu(menubar, tearoff=0)  
+help.add_command(label="About")  
+menubar.add_cascade(label="Help", menu=help)  
+top.config(menu=menubar)  
+top.mainloop() 

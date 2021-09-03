@@ -1,0 +1,67 @@
+startswith()
+It returns True if a string starts with the specified prefix(string). If not, it returns False.
+
+Syntax:
+str.startswith(prefix[, start[, end]])
+
+Example:
+PyTxt="Python programming is easy."
+print(PyTxt.startswith('programming is', 7))
+print(PyTxt.startswith('programming is', 7, 18))
+print(PyTxt.startswith('programming is', 7, 21))
+
+split():
+It splits a string into a list.
+
+Syntax:
+string.split(separator, max)
+
+Example:
+PyStr="hello my name is Raju"
+print(PyStr.split(" "))
+O/P:
+['hello', 'my', 'name', 'is', 'Raju']
+
+Example:
+PyStr="hello#my#name is Raju"
+print(PyStr.split("#"))
+O/P:
+['hello', 'my', 'name is Raju']
+
+Example:
+PyStr="hello#my#name is Raju"
+print(PyStr.split("#",1))
+O/P:
+['hello', 'my'#'name is Raju']
+
+Example:
+PyStr="Hello-Welcome-To-PYTHON"
+Str=PyStr.split('-')
+for x in Str:
+    print(x)
+
+RealTime Example:
+Taking multiple inputs from the user using split() method in Python
+
+Syntax:
+input().split([separator], [maxsplit])
+
+Example:No Separator
+a, b = input('Enter two integer numbers: ').split()
+print("a = ",a, ",b = ",b)
+
+Example2:No Separator
+name, age, perc = input("Enter student's details: ").split()
+print("Name: ", name)
+print("Age: ", age)
+print("Percentage: ", perc)
+
+Example1:Using Separator
+a, b = input('Enter two integer numbers: ').split(',')
+print("a = ",a, ",b = ",b)
+
+Example2:Using Separator
+name, age, perc = input("Enter student's details: ").split(',')
+print("Name: ", name)
+print("Age: ", age)
+print("Percentage: ", perc)

@@ -1,0 +1,460 @@
+Define Method?
+A method  is an operation on object , with in the class
+
+Example:
+class Banking():
+#It is a Method of Member
+#Class inside all are members
+    def MyCustomer():
+        print("Welcome to Banking")
+        return()
+#Driver Code
+BB=Banking()
+BB.MyCustomer()
+#TypeError: MyCustomer() takes 0 positional arguments but 1 was given
+
+Self variable:
+self is the default variable which is always pointing to current object (like this keyword in JAVA) By using self we can access instance variables and instance methods of object.
+
+Example:
+class Banking():
+    def MyCustomer(self):
+        print("Welcome to Banking")
+        return()
+#Driver Code
+BB=Banking()
+BB.MyCustomer()
+
+Example:
+class Human():
+    "This class demonstrates the creation of Objects"
+    #Instance Attributes
+    num=100
+    #Instance Method
+    def EampleMethod(self):
+        print("I am a method inside the class")
+
+#Creating Object or Instance of Human Class
+HH=Human()
+print(HH.num)
+#Calling Method
+HH.EampleMethod()
+print(Human.__doc__)
+print(help(Human))
+
+Example:
+class Banking():
+    def MyCustomer(x):
+        print("Welcome to Banking")
+        return()
+#Driver COde
+BB=Banking()
+BB.MyCustomer()
+
+Example:
+class Banking():
+    def MyCustomer(self):
+        print("Welcome to Banking")
+        print(id(self))
+#Driver Code
+BB=Banking()
+BB.MyCustomer()
+print(id(BB))
+
+NOTE:
+As per PYTHON Documentation, self is not mandatory, It is not keyword, self replace by any argument, but first argument is default & acting as self. self value provided by PVM.
+
+Example:
+class MyTry_Finally():
+    def Exceptions(self):
+        try:
+            x=int(input("Enter Any Number: "))
+            y=int(input("Enter Any Number: "))
+            z=x/y
+            print("The Result is: ",z)
+        except ZeroDivisionError:
+            print("Y must not be ZERO")
+        except ValueError:
+            print("Invalid Input")
+        finally:
+            print("FinallyBlockSuccess")
+
+#Creating Instance or Object
+MyObj=MyTry_Finally()
+MyObj.Exceptions()
+MyObj.Exceptions()
+
+Difference between Function and Method in PYTHON:
+Function:
+1 It is always independent, not related to any Class
+2 Outside the class a piece of code
+3 No Self Parameter required
+4 No Instance required to call
+
+Method:
+1 It is always related to a class
+2 Inside the class a piece of code
+2 Self Parameter required
+4 Always instance required to call 
+
+Constructor in PYTHON:
+1 It is a special method or magical method in python.
+2 Name of the constructor should be __init__
+3 It will be executed automatically at the time of object creation.
+4 The main advantage of constructor is to declare and initialize instance variables.
+5 For every instance constructor will be exeucted one-time
+6 It can take atleast one argument(self)
+7 It is an optional, if we are not providing any constructor then Python will provide default constructor.
+
+Constructors can be of two types.
+1 Parameterized Constructor
+2 Non-parameterized Constructor
+
+Example:
+class MyBanking():
+    def __init__(self):
+        print("Hello I am Always First Get Executed")
+        print("Thank U")
+#Creating an Object
+MM=MyBanking() 
+
+Example:
+class MyBanking():
+    def __init__(self,name):
+        print("Hello I am Always First Get Executed")
+        print("Thank U")
+      #Instance Variable is name
+        self.name=name
+        print("My Name is: ",self.name)
+#Creating Object or Instance/Driver Code
+MM=MyBanking("PYTHON")
+
+Example:
+class MyBanking():
+    def __init__(self,a):
+        print("Hello I am Always First Get Executed")
+        print("Thank U")
+      #Instance Variable is name
+        self.name=a
+        print("My Name is: ",self.name)
+#Creating Object or Instance/Driver Code
+MM=MyBanking("PYTHON")
+
+Example: Counting the number of objects of a class
+class Student:    
+    count = 0    
+    def __init__(self):    
+        Student.count = Student.count + 1    
+s1=Student()    
+s2=Student()    
+s3=Student()    
+print("The number of students:",Student.count)
+
+Example:
+class Human():
+    life="Air & Water"
+    #Instance Attributes
+    def __init__(self,name,height,weight):
+        self.name=name
+        self.height=height
+        self.weight=weight
+    #Instance Method
+    def Eating(self,food):
+        return "{} is eating {}".format(self.name,food)
+#Creating object of human class
+Ram=Human('Ram',6,70)
+Scott=Human('Scott',6,76)
+print(Human.life)#Accessing class level variable
+
+print("Height of {} is {}".format(Ram.name,Ram.height))
+print("Height of {} is {}".format(Ram.name,Ram.weight))
+print(Ram.Eating("Pizza"))
+
+print("Height of {} is {}".format(Scott.name,Scott.height))
+print("Height of {} is {}".format(Scott.name,Scott.weight))
+print(Ram.Eating("Big Burger"))
+
+Example:
+class Basket():
+    def __init__(self):
+        self.basket=[]
+    
+    #Creating Instance Methods
+    def Fill(self,fruit):
+        self.basket.append(fruit)
+        
+    def Delete(self,fruit):
+        if fruit in self.basket:
+            self.basket.remove(fruit)
+            
+    def Show(self):
+        for fruit  in self.basket:
+            print(fruit)
+Obj=Basket()
+Obj.Fill("Apple")
+Obj.Fill("Grapes")
+Obj.Fill("Papaya")
+Obj.Show()
+print()
+Obj.Delete("Apple")
+Obj.Show()
+
+Example:
+class MyBanking():
+    def __init__(self):
+        print("Hello I am Always First Get Executed")
+    def Display(self):
+        print("Welcome to Display Method")
+        print("Good Bye")
+#Creating Object or Instance
+MM=MyBanking()
+
+Example:
+class MyBanking():
+    def __init__(self):
+        print("Hello I am Always First Get Executed")
+    def Display(self):
+        print("Welcome to Display Method")
+        print("Good Bye")
+
+MM=MyBanking()
+MM.Display()
+
+Example:
+class person:
+    def __init__(self,name):
+        self.name=name
+    def display(self):
+        print("Hello",self.name)
+        return
+MyObj=person('Raju')
+MyObj.display()
+
+Example:
+class person:
+    def __init__(self,name):
+        self.name=name
+    def display(self):
+        print("Hello",self.name)
+        return
+person('Raju').display()
+
+Example:
+class Employee():
+    def __init__(self,name,eid,loc):
+        self.name=name
+        self.eid=eid
+        self.loc=loc
+    def eDetails(self):
+        print("Hello Name is:",self.name)
+        print("Employee ID is:",self.eid)
+        print("Employee Location is:",self.loc)
+Emp=Employee("KSRaju",1139,"HYD")
+Emp.eDetails()
+
+Example:
+class Employee():
+   def eDetails(self):
+        print("Hello Name is:",self.name)
+        print("Employee ID is:",self.eid)
+        print("Employee Location is:",self.loc)
+Emp=Employee()
+Emp.name='Raju'
+Emp.eid=101
+Emp.loc="HYD"
+Emp.eDetails()
+
+Example:
+class Employee():
+    def Emp(self,Name,Id,Loc):
+        self.Name=Name
+        self.Id=Id
+        self.Loc=Loc
+        
+    def eDetails(self):
+        print("Hello Name is:",self.Name)
+        print("Employee ID is:",self.Id)
+        print("Employee Location is:",self.Loc)
+
+EE=Employee()
+EE.Emp("Raju",1001,'Hyd')
+EE.eDetails()
+
+Example:
+class Test():
+    def __init__(self): 
+        print("Hei I am a Constructor.!")
+    def Method(self):
+        print("Hello I am a Method.!")
+Tst_One=Test()
+Tst_Two=Test()
+Tst_Three=Test()
+Tst_One.Method()
+
+Example:
+class Me():
+    def __init__(self):
+        print("Hei Constructor")
+        print(id(self))
+MM=Me()
+MM.__init__()
+MM.__init__()
+
+Example:
+
+lass Banking():
+    #Constructor
+    def __init__(self):
+        #Inside Constructor by using self variable
+        self.x=100
+    
+    #Instance Method
+    def MyMethod(self):
+        #Inside Instance Method by using self variable
+        self.y=300
+
+BB=Banking()
+BB.MyMethod()
+#Outside of the class by using object reference variable
+BB.z=600
+print(BB.__dict__)
+
+
+Find the number of references of an object:
+sys.getrefcount(objectreference)
+
+EXAMPLE:
+import sys
+class Bank():
+    pass
+BB=Bank()
+BB1=BB
+BB2=BB1
+print(sys.getrefcount(BB))
+
+Note: 
+For Every object, PYTHON internally maintains one default reference variable 'self'
+
+Python Default Constructor
+When we do not include the constructor in the class or forget to declare it, then that becomes the default constructor. It does not perform any task but initializes the objects.
+
+Example:
+class Student:  
+    roll_num = 101  
+    name = "Joseph"  
+    def display(self):  
+        print(self.roll_num,self.name)  
+      
+st = Student()  
+st.display()
+
+Differences between Methods and Constructors:
+Method
+1. Method can be any name
+2. It will be executed if we call that method
+3. For an object, method can be called any number of times.
+4. Method contains business logic
+
+Constructor
+1. Name should be always __init__
+2. It will be executed automatically at the time of object creation.
+3. For  object, Constructor will be executed one-time
+4. Constructor  Inside we have to declare, initialize instance variables
+
+In Python class we can represent data by using the following variables.
+1.Instance Variables (Object Level Variables)	
+2.Static Variables (Class Level Variables)
+3.Local variables (Method Level Variables)
+
+Instance Variables:
+If the value of a variable is varied from object to object, for every object a separate copy of instance variables will be created.
+
+Where we can declare Instance Variables:
+1 Inside Constructor by using self variable
+2 Inside Instance Method by using self variable
+3 Outside of the class by using object reference variable
+
+Example:
+class Emp():
+    def __init__(self):
+        self.eid=1
+        self.ename='Rama'
+        self.esal="$1000"
+
+eDetails=Emp()
+print(eDetails.__dict__)
+
+Example:
+class MyClass():
+    def __init__(self):
+        self.x=100
+    
+    def MyMethod(self):
+        self.y=200
+
+MM=MyClass()
+MM.MyMethod()
+print(MM.__dict__)
+
+Example:
+class MyClass():
+    def __init__(self):
+        #Instance Variable with self
+        self.x=100
+    
+    def MyMethod(self):
+        #Instance Variable with self
+        self.y=200
+
+MM=MyClass()
+MM.MyMethod()
+#Instance Variable with Object Reference
+MM.z=300
+print(MM.__dict__)
+
+Example:
+class MyClass():
+    def __init__(self):
+        self.x=100
+    
+    def MyMethod(self):
+        self.x=200
+        self.y=300
+
+MM=MyClass()
+MM.MyMethod()
+MM.y=400
+MM.z=500
+print(MM.__dict__)
+
+Example: Deleting Instance Variabes
+class MyClass():
+    def __init__(self):
+        self.x=100
+    
+    def MyMethod(self):
+        self.x=200
+        self.y=300
+        #Deleting Instance variables
+        del self.x
+
+MM=MyClass()
+MM.MyMethod()
+MM.y=400
+#Deleting Instance variables
+del MM.y
+MM.z=500
+print(MM.__dict__)
+
+Example:
+class MyClass():
+    def __init__(self):
+        self.x=100
+        self.y=200
+    
+MM1=MyClass()
+MM1.x=300
+MM2=MyClass()
+MM2.y=400
+print(MM1.x,MM1.y)
+print(MM2.x,MM2.y)

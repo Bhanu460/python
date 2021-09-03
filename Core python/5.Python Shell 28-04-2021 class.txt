@@ -1,0 +1,127 @@
+Python vs JAVA
+Java (1995) James Gosling
+1 Statically Typed, All variable types must be Explicitly declared. 
+2 Lengthy and Less Compact Code, Typing Static, strong, safe
+3 Uses braces for structuring code
+4. Faster but Complex Syntax
+5. Lesser programmer productivity
+6. No perfect libraries for ML, DL, AI, NLP and IoT
+
+Example:JavaCode:
+public class HelloWorld
+{
+   public static void main (String[] args)
+   {
+      System.out.println("Hello, World!");
+   }
+}
+
+Example:
+public class HelloWorld
+{
+   public static void main (String[] args)
+   {
+     for(int i=1;i<=10;i++)
+     {
+      System.out.println("Hello, World!");
+      }
+   }
+}
+
+Python (Dec,1989)-Guido Van Rossum-Amoeba-OS
+1 Dynamically Typed, No need to declare any data type 
+2. Smaller and Compact Code, Duck Typing , dynamic, strong
+3. Uses Indentation for structuring code
+4. Faster to learn, Easy Syntax
+5. Higher programmer productivity
+6. Extensive libraries for ML, DL, AI, NLP and IoT
+
+Example:
+print("Hello, World!")
+
+Example:
+print("Hello, World"*10)
+
+Comments in PYTHON:
+Comments in Python are used to improve the readability of the code. Comments are non executable statements or ignore statements. Using these comments we can declare user defined or customized statements in the source code. Python supports two types of comments.
+1 Single lined comment.
+2 Multi lined Comment.
+
+1 Single lined comment. (In Line Comments)
+In Python, we use the pound (#) symbol to start writing a comment. If developer want to only specify one line comment than use single line comment, then comment must start with #
+
+>>> #This is single line comment. (pound)
+>>> #print("Hello")
+>>> #print("Welcome to PYTHON Programming")
+
+Multi-line comments
+If we have comments that extend multiple lines, one way of doing it is to use pound (#) in the beginning of each line.
+
+>>> #This is a long comment and it extends to multiple lines, This is a long comment and it extends to multiple lines.
+
+3) Multi-line string comments (Block Comments)
+For multi-line we have to put a hash (#) symbol in each line.To overcome this problem multi-line string comments using delimiter (''') are provided. It is useful when does not fit in one line. 
+
+Note: A delimiter is a sequence of one or more characters.
+
+Example:
+'''
+    Here we will check a given number n is even or odd 
+    with multi-line comments in Python.
+'''
+
+Eample: As per RealTime Project(s) UseCase:
+>>> #NameOfTheProject: BFSI
+>>> #NameOfTheTask:GenerateWeeklyReports
+>>> #TaskAssignedBy:TeamLead
+>>> #TaskReviewedBy:TeamManager/TeamLead
+>>> #ApproxTaskFinishedDate:01/11/2020
+>>> #CommentsOnTask:
+>>> #FeedBackFromClient:
+
+PYTHON SHELL PROGRAMMING:
+ScriptRunMode/Dev. Mode
+You can store code in a file and use the interpreter to execute the contents of the file, which is called a script. Python scripts have names that end with .py Extension.
+
+Example:
+1. Goto IDLE, Select File and click on New or Ctrl+N (to Open New Window)
+2. Enter required python statements or commands
+
+print("Welcome to Script MODE")
+print('Welcome to Dev MODE')
+print("""It is a PYTHON Shelll""")
+print('''Good Bye...!!''')
+print(12345)
+
+3. Save with .py Extension @ desired location
+4. Hit the key F5 or Goto run menu click Run
+5. The out put displayed in readonly format on the IDLE
+6. Do required modifications in the saved file and re-run..!!
+
+PYTHON File Other Extensions:
+.py ==> Python File (Regular Scripts)
+.py3 ==> (rarely used) Python3 script
+.pyc==> This is the compiled bytecode/compiled scripts(Bytecode)
+.pyd ==> This is basically a windows dll file
+.pyo ==> This is optimized pyc file 
+.pyw==Python script for Windows
+.pyz ==> Python script archive (Compressed or Zip formated)
+
+SETTING PYTHON PATH IN Windows:
+Right click on My Computer ==>Properties ==> Advanced System Settings ==>Environment Variable ==>NewIn Variable name write path and in Variable value.
+>>> import os
+>>> os.getcwd() 
+Displays PYTHON Installed Path, copy path without quotes ==> Click Ok ==>Ok.
+
+Clear screen in Windows:
+There is no python builtin command for IDLE to clear the screen in Windows platform. We can perform through customized or userdefined commands..!!
+
+>>> print("\n"*20)#displaying blank lines
+>>> clear="\n"*20#Assign blank lines
+>>> print(clear)#displaying blank lines
+
+INSIDE PYTHON
+After successful installation of Python, It is the combination of Interpreter and Support Library.
+
+Programmers View of Interpreter
+Interpreter is a software, which takes source code, reads it line by line and executes it line by line to produce the output.

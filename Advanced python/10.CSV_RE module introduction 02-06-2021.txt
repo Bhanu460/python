@@ -1,0 +1,189 @@
+Python Data Processing and Encoding:
+CSV (Comma Separated Values/Data) files to store data that are in tabular format into plain text & each line is treated as a data record in the file. 
+
+Define Delimiter:
+It is a sequence of one or more characters used to specify the boundary between separate.
+Example:
+A delimiter is the comma character, or Space, or Gap or Colon etc.. a CSV file in Notepad, Microsoft Excel, OpenOffice Calc, and Google Docs.
+
+Syntax: CSV formated text..!!
+fname,lname,age,salary
+nancy,davolio,33,$30000
+erin,borakova,28,$25250
+tony,raphael,35,$28700
+
+In PYTHON Environment  we can able to work with csv files, we can use built-in module is called CSV.
+1. Open the file on required mode
+2. Create the csv file represented object
+3. Read or write or update the data
+
+Syntax:
+import csv
+
+CSV Functions
+1 csv.reader
+2 csv.writer
+
+EXAMPLE:Writing data in CSV file (Creating CSV File)
+import csv
+try:
+    with open("MyFile.csv",mode='w',encoding='utf-8') as FP:
+        a=csv.writer(FP,delimiter=';')
+        data=[['STOCK','SALES','PRICE'],
+              ['100','90','90$'],
+              ['300','100','100$'],
+              ['100','200','200$']]
+        a.writerows(data)
+        print("CSVFileCreatedSuccessfully")
+except IOError:
+    print("SorryCSVFileUnableTOCreate")
+    print("ServerWriteProtected")
+finally:
+    print("FinallyBlockSuccess")
+
+EXAMPLE:Appending data in CSV file..!!
+import csv
+try:
+    with open("BigData.csv",mode='a',encoding='utf-8') as FP:
+        a=csv.writer(FP,delimiter=',')
+        data=[['10','9','9$'],
+              ['0','0','0$'],
+              ['10','2','2$']]
+        a.writerows(data)
+        print("CSVFileAppendSuccessfully")
+except IOError:
+    print("SorryCSVFileUnableTOAppend")
+    print("ServerWriteProtected")
+finally:
+    print("FinallyBlockSuccess")
+
+EXAMPLE: Reading CSV File Without Builtin Methods..!!
+try:
+    with open("BigData.csv",mode='r',encoding='utf-8') as FP:
+        for data in FP:
+            print(data)
+        print("CSVFileReadSuccessfully")
+except IOError:
+    print("SorryCSVFileUnableToAppend")
+    print("ServerWriteProtected")
+finally:
+    print("FinallyBlockSuccess")
+
+Example:Reading CSV File
+import csv
+with open("MyFile.csv",'r') as FP:
+    a=csv.reader(FP)
+    data=[]
+    for row in a:
+        if len(row)!=0:
+            data=data+[row]
+print(data) 
+
+#without using csv module
+path="MyFile.csv"
+lines=[line for line in open(path)]
+print(lines[0])
+
+Python String strip() Method
+It returns a copy of the string in which all chars have been stripped from the beginning and the end of the string (default whitespace characters).
+
+Syntax:
+str.strip([chars]);
+
+Example:
+path="MyFile.csv"
+lines=[line for line in open(path)]
+print(lines[0])
+print(lines[1].strip())
+
+Python String split() Method
+It returns a list of all the words in the string, using str as the separator.
+
+Syntax
+str.split(",").
+
+Example:
+path="MyFile.csv"
+lines=[line for line in open(path)]
+print(lines[0])
+print(lines[1].strip())
+print(lines[1].strip().split(','))
+
+http://zetcode.com/python/csv/
+
+
+WORKING WITH PYTHON REGULAR EXPRESSIONS
+WHY REGULAR EXPRESSIONS?
+#Example1
+str1="My Name is Raju"
+print(str1.replace("Raju","KSRaju"))
+
+#Example2:
+str2="Main Street is broad road"
+print(str2.replace("road","rd"))
+
+NOTE:
+The above example converting all "road" patterns into rd, this is illegal, that time we are counting characters as follows...!!
+
+#Example3: We can replace with the help of index
+print(str2[0:17]+str2[17:].replace("road","rd"))
+
+NOTE:
+The above example display result as per programmer expectation, but counting characters every time is big challange, that time we are implementing PYTHON regexp or regex or re. 
+
+Define re?
+An Expression, which is matching multiple conditions.
+OR
+Regular Expressions are powerful standardized way of searching, replacing, and parsing text with complex patterns of characters.
+
+Syntax
+import re
+
+Regular Expression Patterns
+You can escape a control character by preceding it with a backslash.
+Pattern	Description
+^	Matches beginning of line.
+$	Matches end of line.
+.	Matches any single character except newline.
+re*	Matches 0 or more occurrences of preceding expression.
+re+	Matches 1 or more occurrence of preceding expression.
+re?	Matches 0 or 1 occurrence of preceding expression.
+
+Special Character Classes
+Example	Description
+\d	Match a digit: [0-9]
+\D 	Match a nondigit: [^0-9] 
+\s	Match a whitespace character: [ \t\r\n\f]
+\S 	Match nonwhitespace: [^ \t\r\n\f]
+\w	Match a single word character: [A-Za-z0-9_]
+\W	Match a nonword character: [^A-Za-z0-9_]
+
+Literal characters
+Example		Description
+[Pp]ython 	Match "Python" or "python"
+rub[ye]		Match "ruby" or "rube"
+[0-9]		Match any digit; same as[0123456789]
+[^0-9]		Match anything other than a digit
+[a-z]		Match any lowercase
+[A-Z]		Match any uppercase 
+[a-zA-Z0-9]	Match any of the above
+
+Repetition Cases
+Example	Description
+ruby? 	Match "rub" or "ruby": the y is optional
+ruby* 	Match "rub" plus 0 or more y's
+ruby+	Match "rub" plus 1 or more y's
+\d{3}	Match exactly 3 digits
+\d{3,}	Match 3 or more digits
+\d{3,5}	Match 3, 4, or 5 digits
+
+The most common uses of Regular Expressions are:
+1 Search a string (match & search)
+2 Finding a string (findall)
+3 Break string into a sub strings (split)
+4 Replace part of a string (sub)
+
+Various methods of RE?
+The 're' package provides multiple methods to perform queries on an input string. 
+1 re.match()	2 re.search()
+3 re.findall()	4 re.split()		5 re.sub()
