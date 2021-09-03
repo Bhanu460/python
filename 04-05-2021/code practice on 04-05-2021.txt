@@ -1,0 +1,18 @@
+print(format(1234))
+print(format(1234,'d'))
+print(format(1234,'f'))
+#print(format(1234,'S'))#Value Error
+print(format("Hello",'s'))#Hello
+print(format(2/3,'f'))#Hello
+#print(format(2/3,'d'))#Error Not Support
+print(format(2/3,'.5f'))
+print(format(2/3,'.2f'))
+print(format(2/3,'.1f'))
+print(format("Hello",'.3s'))#Hel
+print(format("Hello",'.1s'))#H
+
+
+
+print(format("PYTHON","<40"))
+print(format("PYTHON","^40"))
+print(format("PYTHON",">40"))
