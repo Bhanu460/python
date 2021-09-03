@@ -1,6 +1,6 @@
-for letter in "python":
-    if letter == 'h':
+for letters in "python":
+    if letters == 'h':
         continue
         print('this is pass block')
-    print('current letter:', letter)
+    print('current letter:', letters)
 
